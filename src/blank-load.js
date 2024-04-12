@@ -8,3 +8,8 @@ export const loadBlankProject = () => {
     console.log(projectsArray);
     return {projectsArray, projectTitle};
 }
+
+export const loadUI = () => {
+    let content = document.getElementById('content');
+    content.classList.add('box');
+}
