@@ -26,7 +26,7 @@ export function createTodo(title, description, dueDate, priority, notes, checkli
 
 createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false);
 
-export function printProject(){
+export const printProject = () => {
     console.log(project);
 }
 
