@@ -22,8 +22,8 @@
     box-sizing: border-box;
 }
 
-.box:hover {
-    background-color: #e0e0e0;
+.box.clickable:hover {
+    background-color: rgba(224, 224, 224, 0.5); /* Change background color with opacity */
 }
 
 .plus-sign {

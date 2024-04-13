@@ -20,6 +20,8 @@ function addTodoBox() {
     const content = document.querySelector('.content');
     const { box, plusSign } = createBox();
 
+    box.classList.add('clickable'); // Add clickable class to initial box
+
     plusSign.addEventListener('click', function() {
         initialiseTodoBox(box); // Initialise clicked box as todo list
         addTodoBox(); // Add a new clickable box
