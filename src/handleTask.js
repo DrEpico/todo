@@ -19,7 +19,7 @@ function Todo(title, description, dueDate, priority, notes, checklist){
 let project = [];
 
 //Function to create and add a todo to the object
-function createTodo(title, description, dueDate, priority, notes, checklist){
+export function createTodo(title, description, dueDate, priority, notes, checklist){
     let todo = new Todo(title, description, dueDate, priority, notes, checklist);
     project.push(todo);
 }
