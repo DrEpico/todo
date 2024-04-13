@@ -22,6 +22,9 @@
     box-sizing: border-box;
 }
 
+.box:hover {
+    background-color: #e0e0e0;
+}
 
 .plus-sign {
     position: absolute; /* Position the plus sign relative to the .box element */
@@ -31,5 +34,6 @@
     font-size: 24px; /* Adjust the size of the plus sign */
     color: white; /* Set the color of the plus sign */
     cursor: pointer; /* Change cursor to indicate it's clickable */
+    padding: 70px 200px;
 }
 
