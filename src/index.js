@@ -16,6 +16,6 @@ loadBlankProject();
 loadInitialUI();
  
 
-createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false);
+// createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false);
 printProject();
 
