@@ -14,35 +14,29 @@ function createBox() {
     return { box, plusSign };
 }
 
-function initialiseTodoBox(box, todo) {
+function initTodoBox(box, todo) {
     box.textContent = 'Todo List'; // Update content to todo list
     box.classList.remove('clickable'); // Remove clickable class
 
-
-
     const titleElement = document.createElement('h2');
-    // titleElement.textContent = todo;
+    titleElement.textContent = todo.title;
 
     const descriptionElement = document.createElement('p');
-    // descriptionElement.textContent = todo.description;
+    descriptionElement.textContent = `Description: ${todo.description}`;
 
     const dueDateElement = document.createElement('p');
-    // dueDateElement.textContent = `Due Date: ${todo.dueDate.toLocaleDateString()}`
+    dueDateElement.textContent = `Due Date: ${todo.dueDate}`
 
     const priorityElement = document.createElement('p');
-    // priorityElement.textContent = `Priority: ${todo.priority}`;
-
-    const notesElement = document.createElement('p');
-    // notesElement.textContent = `Notes: ${todo.notes}`;
+    priorityElement.textContent = `Priority: ${todo.priority}`;
     
     const checklistElement = document.createElement('p');
-    // checklistElement.textContent = `Status: ${todo.checklist ? 'Due' : 'Done'}`;
+    checklistElement.textContent = `Status: ${todo.checklist ? 'Due' : 'Done'}`;
 
     box.appendChild(titleElement);
     box.appendChild(descriptionElement);
     box.appendChild(dueDateElement);
     box.appendChild(priorityElement);
-    box.appendChild(notesElement);
     box.appendChild(checklistElement);
 }
 
@@ -54,7 +48,7 @@ function addTodoBox() {
 
     plusSign.addEventListener('click', function() {
         
-        initialiseTodoBox(box, createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false)); // Initialise clicked box as todo list
+        initTodoBox(box, createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false)); // Initialise clicked box as todo list
         addTodoBox(); // Add a new clickable box
     });
 
@@ -68,7 +62,7 @@ export const loadInitialUI = () => {
     box.classList.add('clickable'); // Add clickable class to initial box
 
     plusSign.addEventListener('click', function() {
-        initialiseTodoBox(box); // Initialise clicked box as todo list
+        initTodoBox(box, createTodo()); // Initialise clicked box as todo list
         addTodoBox(); // Add a new clickable box
     });
 

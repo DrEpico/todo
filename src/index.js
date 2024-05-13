@@ -1,7 +1,9 @@
+//index.js
+
 import { loadBlankProject } from './blank-load'; 
 import { loadInitialUI } from './ui';
 import { printProject } from './handleTask';
-import { createTodo } from './handleTask';
+// import { createTodo } from './handleTask';
 
 
 //test
@@ -14,6 +16,7 @@ contentDiv.appendChild(testH1);
 //Load a blank project on first land
 loadBlankProject();
 loadInitialUI();
+
  
 
 // createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false);

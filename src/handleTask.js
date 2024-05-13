@@ -6,12 +6,11 @@
 // let checklist = false;
 
 //Constructor function 
-function Todo(title, description, dueDate, priority, notes, checklist){
+function Todo(title, description, dueDate, priority, checklist){
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.notes = notes;
     this.checklist = checklist;
 }
 
@@ -19,9 +18,14 @@ function Todo(title, description, dueDate, priority, notes, checklist){
 let project = [];
 
 //Function to create and add a todo to the object
-export function createTodo(title, description, dueDate, priority, notes, checklist) {
-    let todo = new Todo(title, description, dueDate, priority, notes, checklist);
-    // project.push(todo);
+export function createTodo() {
+    let title = prompt("Enter title");
+    let description = prompt("Enter sescription");
+    let dueDate = prompt("Enter due date");
+    let priority = prompt("Enter due priority");
+    let checklist = prompt("Completed?")
+    let todo = new Todo(title, description, dueDate, priority, checklist);
+    project.push(todo);
     // printTodo();
     console.log(todo);
     return todo; // Return the todo object
