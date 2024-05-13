@@ -48,8 +48,9 @@ function addTodoBox() {
 
     plusSign.addEventListener('click', function() {
         
-        initTodoBox(box, createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false)); // Initialise clicked box as todo list
+        initTodoBox(box, createTodo(box)); // Initialise clicked box as todo list
         addTodoBox(); // Add a new clickable box
+        generateForm(box);
     });
 
     content.appendChild(box);
@@ -62,11 +63,42 @@ export const loadInitialUI = () => {
     box.classList.add('clickable'); // Add clickable class to initial box
 
     plusSign.addEventListener('click', function() {
-        initTodoBox(box, createTodo()); // Initialise clicked box as todo list
+        initTodoBox(box, createTodo(box)); // Initialise clicked box as todo list
         addTodoBox(); // Add a new clickable box
+        generateForm(box);
     });
 
     content.appendChild(box);
 };
 
+function generateForm(box){
+    let titleElement = document.createElement("input");
+    titleElement.setAttribute("type", "text");
+    titleElement.setAttribute("id", "title");
+    let descriptionElement = document.createElement("input");
+    descriptionElement.setAttribute("type", "text");
+    descriptionElement.setAttribute("id", "description");
+    let dueDateElement = document.createElement("input");
+    dueDateElement.setAttribute("type", "date");
+    dueDateElement.setAttribute("id", "dueDate");
+    let priorityElement = document.createElement("input");
+    priorityElement.setAttribute("type", "text");
+    priorityElement.setAttribute("id", "priority");
+    let checklistElement = document.createElement("input");
+    checklistElement.setAttribute("type", "text");
+    checklistElement.setAttribute("id", "checklist");
+    
+    let submitButton = document.createElement("button");
+    submitButton.setAttribute("id", "createBtn");
+    submitButton.textContent = "Create";
+
+    
+    box.appendChild(titleElement);
+    box.appendChild(descriptionElement);
+    box.appendChild(dueDateElement);
+    box.appendChild(descriptionElement);
+    box.appendChild(priorityElement);
+    box.appendChild(checklistElement);
+    box.appendChild(submitButton);
+}
 

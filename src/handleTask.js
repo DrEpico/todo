@@ -18,13 +18,12 @@ function Todo(title, description, dueDate, priority, checklist){
 let project = [];
 
 //Function to create and add a todo to the object
-export function createTodo() {
-    let title = prompt("Enter title");
-    let description = prompt("Enter sescription");
-    let dueDate = prompt("Enter due date");
-    let priority = prompt("Enter due priority");
-    let checklist = prompt("Completed?")
-    let todo = new Todo(title, description, dueDate, priority, checklist);
+export function createTodo(box) {
+
+
+
+    // let title = prompt("Enter title");
+    let todo = new Todo();
     project.push(todo);
     // printTodo();
     console.log(todo);
