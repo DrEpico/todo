@@ -5,14 +5,8 @@ import { loadInitialUI } from './ui';
 import { printProject } from './handleTask';
 // import { createTodo } from './handleTask';
 
-
 //test
-console.log('test');
-const contentDiv = document.querySelector('.content');
-const testH1 = document.createElement('h1');
-testH1.textContent = 'Todo list app';
-testH1.style.display = 'block'
-contentDiv.appendChild(testH1);
+// console.log('test');
 
 //Load a blank project on first land
 loadBlankProject();
