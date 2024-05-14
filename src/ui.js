@@ -19,33 +19,9 @@ function initTodoBox(box, todo) {
     box.textContent = ''; // Update content to todo list
     box.classList.remove('clickable'); // Remove clickable class
     generateForm(box);
-    // const generatedTodo = generateForm(box);
-
-    // Check if the returned value is a Todo object
-    // if (generatedTodo instanceof Todo) {
-    //     const titleElement = document.createElement('h2');
-    //     titleElement.textContent = generatedTodo.title;
-
-    //     const descriptionElement = document.createElement('p');
-    //     descriptionElement.textContent = `Description: ${generatedTodo.description}`;
-
-    //     const dueDateElement = document.createElement('p');
-    //     dueDateElement.textContent = `Due Date: ${generatedTodo.dueDate}`;
-
-    //     const priorityElement = document.createElement('p');
-    //     priorityElement.textContent = `Priority: ${generatedTodo.priority}`;
-        
-    //     const checklistElement = document.createElement('p');
-    //     checklistElement.textContent = `Status: ${generatedTodo.checklist ? 'Due' : 'Done'}`;
-
-    //     // Append elements to the box
-    //     box.appendChild(titleElement);
-    //     box.appendChild(descriptionElement);
-    //     box.appendChild(dueDateElement);
-    //     box.appendChild(priorityElement);
-    //     box.appendChild(checklistElement);
-    // }
 }
+
+//TODO: Add a button for completed generated todo boxes to be deleted 
 
 function updateBox(box, todo){
     const titleElement = document.createElement('h2');
@@ -102,11 +78,12 @@ export const loadInitialUI = () => {
     content.appendChild(box);
 };
 
-function generateForm(box){
+function generateForm(box) {
     let form = document.createElement("form");
+
     let titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", "title");
-    titleLabel.textContent = "Todo:         "
+    titleLabel.textContent = "Todo:         ";
     let titleElement = document.createElement("input");
     titleElement.setAttribute("type", "text");
     titleElement.setAttribute("id", "title");
@@ -127,7 +104,7 @@ function generateForm(box){
     dueDateElement.setAttribute("type", "date");
     dueDateElement.setAttribute("id", "dueDate");
     dueDateElement.setAttribute("name", "dueDate");
-    
+
     let priorityLabel = document.createElement("label");
     priorityLabel.setAttribute("for", "priority");
     priorityLabel.textContent = "Priority: ";
@@ -144,13 +121,28 @@ function generateForm(box){
     });
 
     let checklistLabel = document.createElement("label");
-    checklistLabel.setAttribute("for", "checklis");
-    checklistLabel.textContent = "Due : Done";
-    let checklistElement = document.createElement("input");
-    checklistElement.setAttribute("type", "text");
-    checklistElement.setAttribute("id", "checklist");
-    checklistElement.setAttribute("name", "checklist");
-    
+    checklistLabel.textContent = "Status: ";
+
+    // Create the "Planned" radio button
+    let plannedRadio = document.createElement("input");
+    plannedRadio.setAttribute("type", "radio");
+    plannedRadio.setAttribute("id", "planned");
+    plannedRadio.setAttribute("name", "status");
+    plannedRadio.setAttribute("value", "planned");
+    let plannedLabel = document.createElement("label");
+    plannedLabel.setAttribute("for", "planned");
+    plannedLabel.textContent = "Planned";
+
+    // Create the "Due" radio button
+    let dueRadio = document.createElement("input");
+    dueRadio.setAttribute("type", "radio");
+    dueRadio.setAttribute("id", "due");
+    dueRadio.setAttribute("name", "status");
+    dueRadio.setAttribute("value", "due");
+    let dueLabel = document.createElement("label");
+    dueLabel.setAttribute("for", "due");
+    dueLabel.textContent = "Due";
+
     let submitButton = document.createElement("button");
     submitButton.setAttribute("id", "createBtn");
     submitButton.textContent = "Create";
@@ -161,7 +153,7 @@ function generateForm(box){
         const description = descriptionElement.value;
         const dueDate = dueDateElement.value;
         const priority = priorityElement.value;
-        const checklist = checklistElement.value;
+        const checklist = plannedRadio.checked ? plannedRadio.value : dueRadio.value;
         const todo = new Todo(title, description, dueDate, priority, checklist);
         console.log(todo);
 
@@ -169,8 +161,9 @@ function generateForm(box){
 
         form.remove();
         updateBox(box, todo);
-    })
+    });
 
+    // Append elements to the form
     form.appendChild(titleLabel);
     form.appendChild(titleElement);
     form.appendChild(document.createElement("br"));
@@ -181,12 +174,17 @@ function generateForm(box){
     form.appendChild(priorityElement);
     form.appendChild(document.createElement("br"));
     form.appendChild(checklistLabel);
-    form.appendChild(checklistElement);
+    form.appendChild(plannedRadio);
+    form.appendChild(plannedLabel);
+    form.appendChild(dueRadio);
+    form.appendChild(dueLabel);
     form.appendChild(document.createElement("br"));
     form.appendChild(dueDateLabel);
     form.appendChild(dueDateElement);
     form.appendChild(document.createElement("br"));
     form.appendChild(submitButton);
+
+    // Append the form to the box
     box.appendChild(form);
 }
 
