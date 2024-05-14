@@ -160,6 +160,7 @@ function generateForm(box){
 
         addTodoBox();
         
+        form.remove();
         updateBox(box, todo);
     })
 
