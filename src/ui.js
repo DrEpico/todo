@@ -25,26 +25,31 @@ function initTodoBox(box, todo) {
 
 function updateBox(box, todo){
     const titleElement = document.createElement('h2');
-        titleElement.textContent = todo.title;
+    titleElement.textContent = todo.title;
 
-        const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = `Description: ${todo.description}`;
+    const descriptionElement = document.createElement('p');
+    descriptionElement.textContent = `Description: ${todo.description}`;
 
-        const dueDateElement = document.createElement('p');
-        dueDateElement.textContent = `Due Date: ${todo.dueDate}`;
+    const dueDateElement = document.createElement('p');
+    dueDateElement.textContent = `Due Date: ${todo.dueDate}`;
 
-        const priorityElement = document.createElement('p');
-        priorityElement.textContent = `Priority: ${todo.priority}`;
-        
-        const checklistElement = document.createElement('p');
-        checklistElement.textContent = `Status: ${todo.checklist ? 'Due' : 'Done'}`;
-
-        // Append elements to the box
-        box.appendChild(titleElement);
-        box.appendChild(descriptionElement);
-        box.appendChild(dueDateElement);
-        box.appendChild(priorityElement);
-        box.appendChild(checklistElement);
+    const priorityElement = document.createElement('p');
+    priorityElement.textContent = `Priority: ${todo.priority}`;
+    
+    const checklistElement = document.createElement('p');
+    if (todo.checklist === 'planned') {
+        checklistElement.textContent = 'Status: Planned';
+    } else if (todo.checklist === 'due') {
+        checklistElement.textContent = 'Status: Due';
+    } else {
+        checklistElement.textContent = 'Status: error';
+    }
+    // Append elements to the box
+    box.appendChild(titleElement);
+    box.appendChild(descriptionElement);
+    box.appendChild(dueDateElement);
+    box.appendChild(priorityElement);
+    box.appendChild(checklistElement);
 }
 
 function addTodoBox() {
@@ -88,6 +93,7 @@ function generateForm(box) {
     titleElement.setAttribute("type", "text");
     titleElement.setAttribute("id", "title");
     titleElement.setAttribute("name", "title");
+    titleElement.setAttribute('required', '');
 
     let descriptionLabel = document.createElement("label");
     descriptionLabel.setAttribute("for", "description");
@@ -146,8 +152,15 @@ function generateForm(box) {
     let submitButton = document.createElement("button");
     submitButton.setAttribute("id", "createBtn");
     submitButton.textContent = "Create";
+    submitButton.setAttribute("type", "submit");
     submitButton.addEventListener("click", function(event) {
         event.preventDefault();
+
+        if (titleElement.value.trim() === '') {
+            // If title is empty, display an error message or style the field to indicate it's required
+            alert('Title is required!');
+            return;
+        }
 
         const title = titleElement.value;
         const description = descriptionElement.value;
