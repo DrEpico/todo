@@ -1,5 +1,6 @@
 
 import { createTodo } from './handleTask';
+import { Todo } from './handleTask';
 
 function createBox() {
     const box = document.createElement('div');
@@ -15,29 +16,59 @@ function createBox() {
 }
 
 function initTodoBox(box, todo) {
-    box.textContent = 'Todo List'; // Update content to todo list
+    box.textContent = ''; // Update content to todo list
     box.classList.remove('clickable'); // Remove clickable class
+    generateForm(box);
+    // const generatedTodo = generateForm(box);
 
-    // const titleElement = document.createElement('h2');
-    // titleElement.textContent = todo.title;
+    // Check if the returned value is a Todo object
+    // if (generatedTodo instanceof Todo) {
+    //     const titleElement = document.createElement('h2');
+    //     titleElement.textContent = generatedTodo.title;
 
-    // const descriptionElement = document.createElement('p');
-    // descriptionElement.textContent = `Description: ${todo.description}`;
+    //     const descriptionElement = document.createElement('p');
+    //     descriptionElement.textContent = `Description: ${generatedTodo.description}`;
 
-    // const dueDateElement = document.createElement('p');
-    // dueDateElement.textContent = `Due Date: ${todo.dueDate}`
+    //     const dueDateElement = document.createElement('p');
+    //     dueDateElement.textContent = `Due Date: ${generatedTodo.dueDate}`;
 
-    // const priorityElement = document.createElement('p');
-    // priorityElement.textContent = `Priority: ${todo.priority}`;
-    
-    // const checklistElement = document.createElement('p');
-    // checklistElement.textContent = `Status: ${todo.checklist ? 'Due' : 'Done'}`;
+    //     const priorityElement = document.createElement('p');
+    //     priorityElement.textContent = `Priority: ${generatedTodo.priority}`;
+        
+    //     const checklistElement = document.createElement('p');
+    //     checklistElement.textContent = `Status: ${generatedTodo.checklist ? 'Due' : 'Done'}`;
 
-    // box.appendChild(titleElement);
-    // box.appendChild(descriptionElement);
-    // box.appendChild(dueDateElement);
-    // box.appendChild(priorityElement);
-    // box.appendChild(checklistElement);
+    //     // Append elements to the box
+    //     box.appendChild(titleElement);
+    //     box.appendChild(descriptionElement);
+    //     box.appendChild(dueDateElement);
+    //     box.appendChild(priorityElement);
+    //     box.appendChild(checklistElement);
+    // }
+}
+
+function updateBox(box, todo){
+    const titleElement = document.createElement('h2');
+        titleElement.textContent = todo.title;
+
+        const descriptionElement = document.createElement('p');
+        descriptionElement.textContent = `Description: ${todo.description}`;
+
+        const dueDateElement = document.createElement('p');
+        dueDateElement.textContent = `Due Date: ${todo.dueDate}`;
+
+        const priorityElement = document.createElement('p');
+        priorityElement.textContent = `Priority: ${todo.priority}`;
+        
+        const checklistElement = document.createElement('p');
+        checklistElement.textContent = `Status: ${todo.checklist ? 'Due' : 'Done'}`;
+
+        // Append elements to the box
+        box.appendChild(titleElement);
+        box.appendChild(descriptionElement);
+        box.appendChild(dueDateElement);
+        box.appendChild(priorityElement);
+        box.appendChild(checklistElement);
 }
 
 function addTodoBox() {
@@ -49,8 +80,8 @@ function addTodoBox() {
     plusSign.addEventListener('click', function() {
         
         initTodoBox(box, createTodo(box)); // Initialise clicked box as todo list
-        addTodoBox(); // Add a new clickable box
-        generateForm(box);
+        // addTodoBox(); // Add a new clickable box
+        // generateForm(box);
     });
 
     content.appendChild(box);
@@ -64,8 +95,8 @@ export const loadInitialUI = () => {
 
     plusSign.addEventListener('click', function() {
         initTodoBox(box, createTodo(box)); // Initialise clicked box as todo list
-        addTodoBox(); // Add a new clickable box
-        generateForm(box);
+        // addTodoBox(); // Add a new clickable box
+        // generateForm(box);
     });
 
     content.appendChild(box);
@@ -116,6 +147,21 @@ function generateForm(box){
     let submitButton = document.createElement("button");
     submitButton.setAttribute("id", "createBtn");
     submitButton.textContent = "Create";
+    submitButton.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const title = titleElement.value;
+        const description = descriptionElement.value;
+        const dueDate = dueDateElement.value;
+        const priority = priorityElement.value;
+        const checklist = checklistElement.value;
+        const todo = new Todo(title, description, dueDate, priority, checklist);
+        console.log(todo);
+
+        addTodoBox();
+        
+        updateBox(box, todo);
+    })
 
     form.appendChild(titleLabel);
     form.appendChild(titleElement);

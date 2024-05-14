@@ -1,6 +1,9 @@
 * {
     color: aliceblue;
-    
+}
+
+body{
+    font-family: Poppins;
 }
 
 .background {
@@ -39,9 +42,23 @@
 }
 
 input {
-    background-color: rgba(255, 0, 0, 0);
-    border-color: rgba(255, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
     margin-bottom: 10px;
 }
 
+input:focus {
+    outline: none;
+    border: none;
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: white;
+}
+
+button:focus {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: white;
+}
 

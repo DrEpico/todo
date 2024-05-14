@@ -6,7 +6,7 @@
 // let checklist = false;
 
 //Constructor function 
-function Todo(title, description, dueDate, priority, checklist){
+export function Todo(title, description, dueDate, priority, checklist){
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
