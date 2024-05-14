@@ -1,5 +1,6 @@
 * {
     color: aliceblue;
+    
 }
 
 .background {
@@ -36,4 +37,11 @@
     cursor: pointer; /* Change cursor to indicate it's clickable */
     padding: 70px 200px;
 }
+
+input {
+    background-color: rgba(255, 0, 0, 0);
+    border-color: rgba(255, 0, 0, 0);
+    margin-bottom: 10px;
+}
+
 

@@ -73,7 +73,6 @@ export const loadInitialUI = () => {
 
 function generateForm(box){
     let form = document.createElement("form");
-    let lineBreak = document.createElement("br");
     let titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", "title");
     titleLabel.textContent = "Todo:         "
@@ -119,23 +118,18 @@ function generateForm(box){
     submitButton.textContent = "Create";
 
     form.appendChild(titleLabel);
-    form.appendChild(document.createElement("br"));
     form.appendChild(titleElement);
     form.appendChild(document.createElement("br"));
     form.appendChild(descriptionLabel);
-    form.appendChild(document.createElement("br"));
     form.appendChild(descriptionElement);
     form.appendChild(document.createElement("br"));
     form.appendChild(priorityLabel);
-    form.appendChild(document.createElement("br"));
     form.appendChild(priorityElement);
     form.appendChild(document.createElement("br"));
     form.appendChild(checklistLabel);
-    form.appendChild(document.createElement("br"));
     form.appendChild(checklistElement);
     form.appendChild(document.createElement("br"));
     form.appendChild(dueDateLabel);
-    form.appendChild(document.createElement("br"));
     form.appendChild(dueDateElement);
     form.appendChild(document.createElement("br"));
     form.appendChild(submitButton);
