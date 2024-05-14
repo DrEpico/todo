@@ -6,6 +6,10 @@ body{
     font-family: Poppins;
 }
 
+h1 {
+    margin-left: 10px;
+}
+
 .background {
     background-color: black;
 }
@@ -21,7 +25,7 @@ body{
     border: 2px white solid;
     margin: 10px;
     padding: 20px;
-    padding-top: 30px;
+    /* padding-top: 30px; */
     position: relative; /* Ensure the plus sign is positioned relative to the .box element */
     margin-bottom: 20px; /* Adjust as needed */
     box-sizing: border-box;
@@ -66,7 +70,7 @@ select {
 }
 
 button {
-    margin-top: 7px;
+    margin-top: 9px;
     background-color: rgba(0, 0, 0, 0);
     border-color: white;
 }
@@ -74,4 +78,14 @@ button {
 button:focus {
     background-color: rgba(0, 0, 0, 0);
     border-color: white;
+}
+
+/* Target the date picker icon specifically */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: white; /* Set the background color of the date picker icon to transparent */
+    /* You can also set other properties like width, height, etc. to customize the appearance of the icon */
+}
+
+#title {
+    margin-top: 20px;
 }

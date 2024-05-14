@@ -138,7 +138,6 @@ function generateForm(box){
     let options = ["Low", "Medium", "High"];
     options.forEach(optionText => {
         let option = document.createElement("option");
-        option.setAttribute('class', 'option');
         option.value = optionText.toLowerCase();
         option.textContent = optionText;
         priorityElement.appendChild(option);
