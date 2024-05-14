@@ -131,10 +131,18 @@ function generateForm(box){
     let priorityLabel = document.createElement("label");
     priorityLabel.setAttribute("for", "priority");
     priorityLabel.textContent = "Priority: ";
-    let priorityElement = document.createElement("input");
-    priorityElement.setAttribute("type", "text");
+    let priorityElement = document.createElement("select");
     priorityElement.setAttribute("id", "priority");
     priorityElement.setAttribute("name", "priority");
+
+    let options = ["Low", "Medium", "High"];
+    options.forEach(optionText => {
+        let option = document.createElement("option");
+        option.setAttribute('class', 'option');
+        option.value = optionText.toLowerCase();
+        option.textContent = optionText;
+        priorityElement.appendChild(option);
+    });
 
     let checklistLabel = document.createElement("label");
     checklistLabel.setAttribute("for", "checklis");
@@ -159,7 +167,7 @@ function generateForm(box){
         console.log(todo);
 
         addTodoBox();
-        
+
         form.remove();
         updateBox(box, todo);
     })
