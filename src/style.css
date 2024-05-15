@@ -29,6 +29,7 @@ h1 {
     position: relative; /* Ensure the plus sign is positioned relative to the .box element */
     margin-bottom: 20px; /* Adjust as needed */
     box-sizing: border-box;
+    min-width: 350px;
 }
 
 .box.clickable:hover {
@@ -88,4 +89,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 #title {
     margin-top: 20px;
+}
+
+.deleteBtn {
+    position: absolute;
+    bottom: 25px;
+    right: 35px;
 }

@@ -36,4 +36,13 @@ export const printProject = () => {
     console.log(project);
 }
 
+export function deleteTodoBox(todo, box){
+    let index = project.indexOf(todo);
+    if(index !== -1){
+        projects.splice(index, 1);
+    }
+
+    box.remove();
+}
+
 

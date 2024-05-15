@@ -1,6 +1,7 @@
 
 import { createTodo } from './handleTask';
 import { Todo } from './handleTask';
+import { deleteTodoBox } from './handleTask';
 
 function createBox() {
     const box = document.createElement('div');
@@ -20,8 +21,6 @@ function initTodoBox(box, todo) {
     box.classList.remove('clickable'); // Remove clickable class
     generateForm(box);
 }
-
-//TODO: Add a button for completed generated todo boxes to be deleted 
 
 function updateBox(box, todo){
     const titleElement = document.createElement('h2');
@@ -44,6 +43,15 @@ function updateBox(box, todo){
     } else {
         checklistElement.textContent = 'Status: error';
     }
+
+    let deleteButton = document.createElement("button");
+    deleteButton.setAttribute("class", "deleteBtn");
+    deleteButton.textContent = "Done";
+    deleteButton.addEventListener("click", function(){
+        deleteTodoBox(todo, box);
+    });
+    box.appendChild(deleteButton);
+
     // Append elements to the box
     box.appendChild(titleElement);
     box.appendChild(descriptionElement);

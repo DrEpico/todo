@@ -17,3 +17,8 @@ loadInitialUI();
 // createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false);
 printProject();
 
+//TODO: Sort by priority, sort by date
+//TODO: Add projects tab
+//TODO: Reseach about nfs date thing
+//TODO: Do localstorage additions
+
