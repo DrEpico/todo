@@ -1,6 +1,8 @@
 import { createTodo } from './handleTodo';
 import { Todo } from './handleTodo';
 import { deleteTodoBox } from './handleTodo';
+import { createProject } from './handleProject';
+import { getProjectContent } from './handleProject';
 
 export const body = document.querySelector('body');
 const content = document.querySelector('.content');
@@ -221,5 +223,22 @@ export function loadSidebar(){
     newProject.setAttribute('class', 'project');
     newProject.textContent = "New project";
     sidebar.appendChild(newProject);
+    listenSidebarClick();
+}
+
+export function listenSidebarClick(){
+    let projects = document.querySelectorAll('.project');
+    projects.forEach(function(project) {
+        project.addEventListener('click', function(event) {
+            let clickedContent = event.target.textContent.trim();
+            if (clickedContent === "New project") {
+                console.log(clickedContent);
+                createProject();
+            } else {
+                console.log(clickedContent);
+                getProjectContent(clickedContent);
+            }
+        });
+    });
 }
 

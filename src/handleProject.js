@@ -3,7 +3,7 @@ export function Project(title, todos){
     this.todos = todos
 }
 
-export const createProjects = () => {
+export const createProject = () => {
     let project = new Project(title, todos); //takes a name for the project and related todo list array 
     projects.push(project);
     //TODO: link with a prompt function in ui class
@@ -11,6 +11,6 @@ export const createProjects = () => {
 
 let projects = [];
 
-function displayProject(){
+export function getProjectContent(projectName){
     //TODO: Displays todos in the selected project
 }
