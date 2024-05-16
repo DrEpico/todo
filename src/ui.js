@@ -213,9 +213,13 @@ export function loadSidebar(){
     title.setAttribute('id', 'title');
     sidebar.appendChild(title);
     title.textContent = "Todo list app";
-    let daily = document.createElement('span');
-    daily.setAttribute('class', 'project');
-    daily.textContent = "Daily";
-    sidebar.appendChild(daily);
+    let today = document.createElement('span');
+    today.setAttribute('class', 'project');
+    today.textContent = "Daily";
+    sidebar.appendChild(today);
+    let newProject = document.createElement('span');
+    newProject.setAttribute('class', 'project');
+    newProject.textContent = "New project";
+    sidebar.appendChild(newProject);
 }
 

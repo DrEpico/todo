@@ -8,10 +8,6 @@ body{
     margin: 0px;
 }
 
-h1 {
-    
-}
-
 .background {
     background-color: black;
 }
@@ -119,7 +115,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .project {
     display: block;
-    margin-bottom: 10px;
     color: #333;
     font-size: 16px;
     color: white;
