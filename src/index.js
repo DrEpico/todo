@@ -3,6 +3,7 @@
 import { loadBlankProject } from './blank-load'; 
 import { loadInitialUI } from './ui';
 import { printProject } from './handleTodo';
+import { loadSidebar } from './ui'
 // import { createTodo } from './handleTask';
 
 //test
@@ -10,6 +11,7 @@ import { printProject } from './handleTodo';
 
 //Load a blank project on first land
 loadBlankProject();
+loadSidebar();
 loadInitialUI();
 
  

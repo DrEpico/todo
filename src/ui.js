@@ -1,7 +1,9 @@
-
 import { createTodo } from './handleTodo';
 import { Todo } from './handleTodo';
 import { deleteTodoBox } from './handleTodo';
+
+export const body = document.querySelector('body');
+const content = document.querySelector('.content');
 
 function createBox() {
     const box = document.createElement('div');
@@ -61,27 +63,25 @@ function updateBox(box, todo){
 }
 
 function addTodoBox() {
-    const content = document.querySelector('.content');
     const { box, plusSign } = createBox();
 
     box.classList.add('clickable'); // Add clickable class to initial box
 
     plusSign.addEventListener('click', function() {
         
-        initTodoBox(box, createTodo(box)); // Initialise clicked box as todo list
+        initTodoBox(box, createTodo()); // Initialise clicked box as todo list
     });
 
     content.appendChild(box);
 }
 
 export const loadInitialUI = () => {
-    const content = document.querySelector('.content');
     const { box, plusSign } = createBox();
 
     box.classList.add('clickable'); // Add clickable class to initial box
 
     plusSign.addEventListener('click', function() {
-        initTodoBox(box, createTodo(box)); // Initialise clicked box as todo list
+        initTodoBox(box, createTodo()); // Initialise clicked box as todo list
     });
 
     content.appendChild(box);
@@ -203,5 +203,19 @@ function generateForm(box) {
 
     // Append the form to the box
     box.appendChild(form);
+}
+
+export function loadSidebar(){
+    let sidebar = document.createElement('div');
+    sidebar.setAttribute('id', 'sidebar');
+    body.insertBefore(sidebar, content);
+    let title = document.createElement('h1');
+    title.setAttribute('id', 'title');
+    sidebar.appendChild(title);
+    title.textContent = "Todo list app";
+    let daily = document.createElement('span');
+    daily.setAttribute('class', 'project');
+    daily.textContent = "Daily";
+    sidebar.appendChild(daily);
 }
 
