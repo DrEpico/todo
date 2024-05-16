@@ -1,7 +1,7 @@
 
-import { createTodo } from './handleTask';
-import { Todo } from './handleTask';
-import { deleteTodoBox } from './handleTask';
+import { createTodo } from './handleTodo';
+import { Todo } from './handleTodo';
+import { deleteTodoBox } from './handleTodo';
 
 function createBox() {
     const box = document.createElement('div');
@@ -69,8 +69,6 @@ function addTodoBox() {
     plusSign.addEventListener('click', function() {
         
         initTodoBox(box, createTodo(box)); // Initialise clicked box as todo list
-        // addTodoBox(); // Add a new clickable box
-        // generateForm(box);
     });
 
     content.appendChild(box);
@@ -84,8 +82,6 @@ export const loadInitialUI = () => {
 
     plusSign.addEventListener('click', function() {
         initTodoBox(box, createTodo(box)); // Initialise clicked box as todo list
-        // addTodoBox(); // Add a new clickable box
-        // generateForm(box);
     });
 
     content.appendChild(box);

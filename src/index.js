@@ -2,7 +2,7 @@
 
 import { loadBlankProject } from './blank-load'; 
 import { loadInitialUI } from './ui';
-import { printProject } from './handleTask';
+import { printProject } from './handleTodo';
 // import { createTodo } from './handleTask';
 
 //test
