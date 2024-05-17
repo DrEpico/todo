@@ -218,12 +218,14 @@ export function loadSidebar(){
     title.textContent = "Todo list app";
     let today = document.createElement('span');
     today.setAttribute('class', 'project');
+    today.setAttribute('id', 'activeTab');
     today.textContent = "Daily";
     sidebar.appendChild(today);
     let newProject = document.createElement('span');
     newProject.setAttribute('class', 'project');
     newProject.textContent = "New project";
     sidebar.appendChild(newProject);
+
     listenSidebarClick();
     initDefaultProject();
 }
@@ -239,6 +241,8 @@ export function listenSidebarClick(){
                 newProjectForm(event);
             } else {
                 console.log(clickedContent);
+                removeActiveTab();
+                addActiveTab(event.target);
                 getProjectContentByName(clickedContent);
             }
         });
@@ -246,6 +250,12 @@ export function listenSidebarClick(){
 }
 
 function newProjectForm(event){
+    // Get the clicked project tab
+    let clickedProject = event.target;
+
+    // Clear the text content of the clicked project tab
+    clickedProject.textContent = '';
+
     // Create a text input field
     let projNameInput = document.createElement("input");
     projNameInput.setAttribute("type", "text");
@@ -253,10 +263,37 @@ function newProjectForm(event){
     projNameInput.setAttribute("name", "projName");
     projNameInput.setAttribute('required', '');
 
-    // Clear the text content of the clicked project tab
-    event.target.textContent = '';
+    // Create a confirmation button
+    let addBtn = document.createElement("button");
+    addBtn.textContent = "Confirm";
+    addBtn.setAttribute("class", "addBtn");
 
-    // Append the text input field to the clicked project tab
-    event.target.appendChild(projNameInput);
+    // Append the text input field and the confirmation button to the clicked project tab
+    clickedProject.appendChild(projNameInput);
+    clickedProject.appendChild(addBtn);
+
+    // Add an event listener to the confirmation button
+    addBtn.addEventListener('click', function() {
+        let newProjectName = projNameInput.value.trim();
+        if (newProjectName) {
+            // Do something with the new project name, e.g., create a new project
+            removeActiveTab();
+            clickedProject.setAttribute('id', 'activeTab');
+            // Optionally replace the input field and button with the new project name
+            clickedProject.textContent = newProjectName;
+        } else {
+            alert("Project name cannot be empty.");
+        }
+    });
 }
 
+function removeActiveTab() {
+    let activeTab = document.getElementById('activeTab');
+    if (activeTab) {
+        activeTab.removeAttribute('id');
+    }
+}
+
+function addActiveTab(element) {
+    element.setAttribute('id', 'activeTab');
+}

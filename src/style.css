@@ -134,3 +134,11 @@ input.projName {
     margin: 0px;
 }
 
+button.addBtn { 
+    margin: 0px;
+}
+
+#activeTab {
+    background-color: aliceblue;
+    color: #333;
+}
