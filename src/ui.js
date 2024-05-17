@@ -1,4 +1,4 @@
-import { createTodo } from './handleTodo';
+import { pushTodo } from './handleTodo';
 import { Todo } from './handleTodo';
 import { deleteTodoBox } from './handleTodo';
 import { createProject } from './handleProject';
@@ -20,7 +20,7 @@ function createBox() {
     return { box, plusSign };
 }
 
-function initTodoBox(box, todo) {
+function initTodoBox(box) {
     box.textContent = ''; // Update content to todo list
     box.classList.remove('clickable'); // Remove clickable class
     generateForm(box);
@@ -71,7 +71,7 @@ function addTodoBox() {
 
     plusSign.addEventListener('click', function() {
         
-        initTodoBox(box, createTodo()); // Initialise clicked box as todo list
+        initTodoBox(box); // Initialise clicked box as todo list
     });
 
     content.appendChild(box);
@@ -83,7 +83,7 @@ export const loadInitialUI = () => {
     box.classList.add('clickable'); // Add clickable class to initial box
 
     plusSign.addEventListener('click', function() {
-        initTodoBox(box, createTodo()); // Initialise clicked box as todo list
+        initTodoBox(box); // Initialise clicked box as todo list
     });
 
     content.appendChild(box);
@@ -177,9 +177,9 @@ function generateForm(box) {
         console.log(todo);
 
         addTodoBox();
-
         form.remove();
         updateBox(box, todo);
+        pushTodo(todo);
     });
 
     // Append elements to the form

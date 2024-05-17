@@ -18,13 +18,8 @@ export function Todo(title, description, dueDate, priority, checklist){
 let project = [];
 
 //Function to create and add a todo to the object
-export function createTodo() {
-    // let title = prompt("Enter title");
-    let todo = new Todo();
+export function pushTodo(todo) {
     project.push(todo);
-    // printTodo();
-    console.log(todo);
-    return todo; // Return the todo object
 }
 
 // createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false);
