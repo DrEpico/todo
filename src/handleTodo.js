@@ -15,18 +15,14 @@ export function Todo(title, description, dueDate, priority, checklist){
 }
 
 //list of todos
-let project = [];
+let dailyProject = [];
 
 //Function to create and add a todo to the object
 export function pushTodo(todo) {
-    project.push(todo);
+    dailyProject.push(todo);
 }
 
-// createTodo('Place holder', 'Description', new Date("2022-03-25"), 'medium', 'notes', false);
-
-export const printProject = () => {
-    console.log(project);
-}
+export const printProject = (project) => console.log(project);
 
 export function deleteTodoBox(todo, box){
     let index = project.indexOf(todo);

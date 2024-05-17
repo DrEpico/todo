@@ -3,6 +3,7 @@ import { Todo } from './handleTodo';
 import { deleteTodoBox } from './handleTodo';
 import { createProject } from './handleProject';
 import { getProjectContent } from './handleProject';
+import { initDefaultProject } from './handleProject'
 
 export const body = document.querySelector('body');
 const content = document.querySelector('.content');
@@ -224,6 +225,7 @@ export function loadSidebar(){
     newProject.textContent = "New project";
     sidebar.appendChild(newProject);
     listenSidebarClick();
+    initDefaultProject();
 }
 
 export function listenSidebarClick(){
