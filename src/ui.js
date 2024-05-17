@@ -2,7 +2,7 @@ import { pushTodo } from './handleTodo';
 import { Todo } from './handleTodo';
 import { deleteTodoBox } from './handleTodo';
 import { createProject } from './handleProject';
-import { getProjectContent } from './handleProject';
+import { getProjectContentByName } from './handleProject';
 import { initDefaultProject } from './handleProject'
 
 export const body = document.querySelector('body');
@@ -236,11 +236,27 @@ export function listenSidebarClick(){
             if (clickedContent === "New project") {
                 console.log(clickedContent);
                 createProject();
+                newProjectForm(event);
             } else {
                 console.log(clickedContent);
-                getProjectContent(clickedContent);
+                getProjectContentByName(clickedContent);
             }
         });
     });
+}
+
+function newProjectForm(event){
+    // Create a text input field
+    let projNameInput = document.createElement("input");
+    projNameInput.setAttribute("type", "text");
+    projNameInput.setAttribute("class", "projName");
+    projNameInput.setAttribute("name", "projName");
+    projNameInput.setAttribute('required', '');
+
+    // Clear the text content of the clicked project tab
+    event.target.textContent = '';
+
+    // Append the text input field to the clicked project tab
+    event.target.appendChild(projNameInput);
 }
 

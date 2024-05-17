@@ -130,4 +130,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: rgb(68, 68, 68);
 }
 
+input.projName {
+    margin: 0px;
+}
 

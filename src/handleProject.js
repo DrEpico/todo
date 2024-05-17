@@ -9,7 +9,7 @@ export function initDefaultProject(){
 }
 
 export const createProject = (title) => {
-    let project = new Project(title, todos); //takes a name for the project and related todo list array 
+    let project = new Project(title); //takes a name for the project and related todo list array 
     projects.push(project);
     //TODO: link with a prompt function in ui class
 }
