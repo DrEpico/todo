@@ -240,7 +240,7 @@ export function listenSidebarClick(){
                 console.log(clickedContent);
                 createProject();
                 newProjectForm(event.target);
-            } else if (clickedContent === ""){
+            } else if (clickedContent === "" || clickedContent === "Confirm"){
             } else {//if user clicks on any of the existing projects...
                 console.log(clickedContent);
                 //remove the activeTab id from the current active tab...
@@ -284,7 +284,7 @@ function newProjectForm(target){
             // Do something with the new project name, e.g., create a new project
             removeActiveTab();
             clickedProject.textContent = newProjectName;
-            // addActiveTab(clickedProject);
+            addActiveTab(clickedProject);
         } else {
             alert("Project name cannot be empty.");
         }
@@ -298,7 +298,6 @@ function removeActiveTab() {
     }
 }
 
-function addActiveTab(event) {
-    let clickedProject = event.target;
-    clickedProject.setAttribute('id', 'activeTab');
+function addActiveTab(clickedElement) {
+    clickedElement.setAttribute('id', 'activeTab');
 }
