@@ -230,34 +230,34 @@ export function loadSidebar(){
     initDefaultProject();
 }
 
-export function listenSidebarClick(){
-    let projects = document.querySelectorAll('.project');
-    projects.forEach(function(project) {
-        project.addEventListener('click', function(event) {
-            let clickedContent = event.target.textContent.trim();
-            //If user clicks on new project...
+export function listenSidebarClick() {
+    let sidebar = document.getElementById('sidebar');
+    sidebar.addEventListener('click', function(event) {
+        let target = event.target;
+        if (target.classList.contains('project')) {
+            let clickedContent = target.textContent.trim();
+            // If user clicks on new project...
             if (clickedContent === "New project") {
                 console.log(clickedContent);
                 createProject();
-                newProjectForm(event.target);
+                newProjectForm(target);
             } else if (clickedContent === "") {
+                // Do nothing if the content is empty
             } else if (clickedContent === "Confirm") {
-                addNewProjectElement()
-            } else {//if user clicks on any of the existing projects...
+                // This case should be handled within newProjectForm's button click event
+            } else { // If user clicks on any of the existing projects...
                 console.log(clickedContent);
-                //remove the activeTab id from the current active tab...
+                // Remove the activeTab id from the current active tab...
                 removeActiveTab();
-                //...and give it to the newly clicked project tab.
-                addActiveTab(event.target); //Which proceeds to select the text input element inside that tab :(
-                //To be implemented
-                // getProjectContentByName(clickedContent);
-                
+                // ...and give it to the newly clicked project tab.
+                addActiveTab(target);
+                // getProjectContentByName(clickedContent); // To be implemented
             }
-        });
+        }
     });
 }
 
-function newProjectForm(target){
+function newProjectForm(target) {
     // Get the clicked project tab
     let clickedProject = target;
 
@@ -281,13 +281,16 @@ function newProjectForm(target){
     clickedProject.appendChild(addBtn);
 
     // Add an event listener to the confirmation button
-    addBtn.addEventListener('click', function() {
+    addBtn.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the event from bubbling up to the parent
         let newProjectName = projNameInput.value.trim();
         if (newProjectName) {
             // Do something with the new project name, e.g., create a new project
             removeActiveTab();
             clickedProject.textContent = newProjectName;
             addActiveTab(clickedProject);
+            // Add a new "New project" tab
+            addNewProjectElement();
         } else {
             alert("Project name cannot be empty.");
         }
@@ -305,7 +308,7 @@ function addActiveTab(clickedElement) {
     clickedElement.setAttribute('id', 'activeTab');
 }
 
-function addNewProjectElement(){
+function addNewProjectElement() {
     let sidebar = document.querySelector('#sidebar');
     let newProject = document.createElement('span');
     newProject.setAttribute('class', 'project');
