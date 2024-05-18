@@ -235,15 +235,19 @@ export function listenSidebarClick(){
     projects.forEach(function(project) {
         project.addEventListener('click', function(event) {
             let clickedContent = event.target.textContent.trim();
+            //If user clicks on new project...
             if (clickedContent === "New project") {
                 console.log(clickedContent);
                 createProject();
                 newProjectForm(event);
-            } else {
+            } else {//if user clicks on any of the existing projects...
                 console.log(clickedContent);
+                //remove the activeTab id from the current active tab...
                 removeActiveTab();
-                addActiveTab(event.target);
-                getProjectContentByName(clickedContent);
+                //...and give it to the newly clicked project tab.
+                addActiveTab(event.target); //Which proceeds to select the text input element inside that tab :(
+                //To be implemented
+                // getProjectContentByName(clickedContent);
             }
         });
     });
