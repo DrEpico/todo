@@ -239,13 +239,14 @@ export function listenSidebarClick(){
             if (clickedContent === "New project") {
                 console.log(clickedContent);
                 createProject();
-                newProjectForm(event);
+                newProjectForm(event.target);
+            } else if (clickedContent === ""){
             } else {//if user clicks on any of the existing projects...
                 console.log(clickedContent);
                 //remove the activeTab id from the current active tab...
                 removeActiveTab();
                 //...and give it to the newly clicked project tab.
-                addActiveTab(event.target); //Which proceeds to select the text input element inside that tab :(
+                addActiveTab(event); //Which proceeds to select the text input element inside that tab :(
                 //To be implemented
                 // getProjectContentByName(clickedContent);
             }
@@ -253,9 +254,9 @@ export function listenSidebarClick(){
     });
 }
 
-function newProjectForm(event){
+function newProjectForm(target){
     // Get the clicked project tab
-    let clickedProject = event.target;
+    let clickedProject = target;
 
     // Clear the text content of the clicked project tab
     clickedProject.textContent = '';
@@ -282,9 +283,8 @@ function newProjectForm(event){
         if (newProjectName) {
             // Do something with the new project name, e.g., create a new project
             removeActiveTab();
-            clickedProject.setAttribute('id', 'activeTab');
-            // Optionally replace the input field and button with the new project name
             clickedProject.textContent = newProjectName;
+            // addActiveTab(clickedProject);
         } else {
             alert("Project name cannot be empty.");
         }
@@ -298,6 +298,7 @@ function removeActiveTab() {
     }
 }
 
-function addActiveTab(element) {
-    element.setAttribute('id', 'activeTab');
+function addActiveTab(event) {
+    let clickedProject = event.target;
+    clickedProject.setAttribute('id', 'activeTab');
 }
