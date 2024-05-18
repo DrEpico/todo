@@ -20,7 +20,6 @@ loadInitialUI();
 printProject();
 
 //TODO: Sort by priority, sort by date
-//TODO: Add projects tab
 //TODO: Reseach about nfs date thing
 //TODO: Do localstorage additions
 

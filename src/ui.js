@@ -240,7 +240,9 @@ export function listenSidebarClick(){
                 console.log(clickedContent);
                 createProject();
                 newProjectForm(event.target);
-            } else if (clickedContent === "" || clickedContent === "Confirm"){
+            } else if (clickedContent === "") {
+            } else if (clickedContent === "Confirm") {
+                addNewProjectElement()
             } else {//if user clicks on any of the existing projects...
                 console.log(clickedContent);
                 //remove the activeTab id from the current active tab...
@@ -249,6 +251,7 @@ export function listenSidebarClick(){
                 addActiveTab(event.target); //Which proceeds to select the text input element inside that tab :(
                 //To be implemented
                 // getProjectContentByName(clickedContent);
+                
             }
         });
     });
@@ -300,4 +303,12 @@ function removeActiveTab() {
 
 function addActiveTab(clickedElement) {
     clickedElement.setAttribute('id', 'activeTab');
+}
+
+function addNewProjectElement(){
+    let sidebar = document.querySelector('#sidebar');
+    let newProject = document.createElement('span');
+    newProject.setAttribute('class', 'project');
+    newProject.textContent = "New project";
+    sidebar.appendChild(newProject);
 }
