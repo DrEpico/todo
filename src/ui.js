@@ -246,7 +246,7 @@ export function listenSidebarClick(){
                 //remove the activeTab id from the current active tab...
                 removeActiveTab();
                 //...and give it to the newly clicked project tab.
-                addActiveTab(event); //Which proceeds to select the text input element inside that tab :(
+                addActiveTab(event.target); //Which proceeds to select the text input element inside that tab :(
                 //To be implemented
                 // getProjectContentByName(clickedContent);
             }
