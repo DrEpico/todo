@@ -243,7 +243,6 @@ export function listenSidebarClick() {
             // If user clicks on new project...
             if (clickedContent === "New project") {
                 console.log(clickedContent);
-                createProject();
                 newProjectForm(target);
             } else if (clickedContent === "") {
                 // Do nothing if the content is empty
@@ -256,16 +255,17 @@ export function listenSidebarClick() {
                 // ...and give it to the newly clicked project tab.
                 addActiveTab(target);
                 
-                let projectName = document.querySelector('#activeTab').textContent;
-                let project = getProjectContentByName('Daily'); 
-                console.log(typeof(project));
-                console.log(project);
-                logProjectTodos(project);
-                // if (project){
-                //     displayProjectContent(project);
-                // } else {
-                //     console.log('Project not found');
-                // }
+                // let projectName = document.querySelector('#activeTab').textContent;
+                let project = getProjectContentByName(clickedContent); 
+                if (project){
+                    console.log(typeof(project));
+                    console.log(project);
+                    logProjectTodos(project);
+                    
+                    displayProjectContent(project);
+                } else {
+                    console.log('Project not found');
+                }
             }
         }
     });
@@ -305,6 +305,7 @@ function newProjectForm(target) {
             addActiveTab(clickedProject);
             // Add a new "New project" tab
             addNewProjectElement();
+            createProject(newProjectName);
         } else {
             alert("Project name cannot be empty.");
         }

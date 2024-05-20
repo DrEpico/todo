@@ -12,11 +12,11 @@ export function Todo(title, description, dueDate, priority, checklist){
 //list of todos
 export const project = [];
 
-//Function to create and add a todo to the object
 
 // handleProject.js import here to access projects array
 import { projects } from './handleProject';
 
+//Function to create and add a todo to the object
 export function pushTodoToProject(todo, projectName) {
     const projectIndex = projects.findIndex(project => project.title === projectName);
     if (projectIndex !== -1) {
