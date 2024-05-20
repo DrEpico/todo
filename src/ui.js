@@ -1,9 +1,12 @@
-import { pushTodo } from './handleTodo';
+//ui.js
+
+import { pushTodoToProject } from './handleTodo';
 import { Todo } from './handleTodo';
 import { deleteTodoBox } from './handleTodo';
 import { createProject } from './handleProject';
 import { getProjectContentByName } from './handleProject';
-import { initDefaultProject } from './handleProject'
+import { initDefaultProject } from './handleProject';
+import { logProjectTodos } from './handleProject';
 
 export const body = document.querySelector('body');
 const content = document.querySelector('.content');
@@ -180,7 +183,8 @@ function generateForm(box) {
         addTodoBox();
         form.remove();
         updateBox(box, todo);
-        pushTodo(todo);
+        let projectName = document.querySelector('#activeTab').textContent;
+        pushTodoToProject(todo, projectName);
     });
 
     // Append elements to the form
@@ -251,12 +255,17 @@ export function listenSidebarClick() {
                 removeActiveTab();
                 // ...and give it to the newly clicked project tab.
                 addActiveTab(target);
-                let project = getProjectContentByName(clickedContent); // To be implemented
-                if (project){
-                    displayProjectContent(project);
-                } else {
-                    console.log('Project not found');
-                }
+                
+                let projectName = document.querySelector('#activeTab').textContent;
+                let project = getProjectContentByName('Daily'); 
+                console.log(typeof(project));
+                console.log(project);
+                logProjectTodos(project);
+                // if (project){
+                //     displayProjectContent(project);
+                // } else {
+                //     console.log('Project not found');
+                // }
             }
         }
     });
@@ -319,4 +328,28 @@ function addNewProjectElement() {
     newProject.setAttribute('class', 'project');
     newProject.textContent = "New project";
     sidebar.appendChild(newProject);
+}
+
+function displayProjectContent(project){
+    let title = project.title;
+    let todos = project.todos;
+
+    console.log(typeof(todos));
+    console.log('amogus');
+
+
+    // let contentArea = document.getElementById('content'); // Assuming you have a content area to display the project details
+    // contentArea.innerHTML = ''; // Clear previous content
+
+    // let projectTitle = document.createElement('h1');
+    // projectTitle.textContent = project.title;
+    // contentArea.appendChild(projectTitle);
+
+    // let todosList = document.createElement('ul');
+    // project.todos.forEach(todo => {
+    //     let todoItem = document.createElement('li');
+    //     todoItem.textContent = todo; // Assuming todos are strings, adjust if they are objects
+    //     todosList.appendChild(todoItem);
+    // });
+    // contentArea.appendChild(todosList);
 }

@@ -1,9 +1,4 @@
-// let title = 'Place holder';
-// let description = 'Description';
-// let dueDate = new Date("2022-03-25");
-// let priority = 'medium';
-// let notes = 'notes'; 
-// let checklist = false;
+//handleTodo.js
 
 //Constructor function 
 export function Todo(title, description, dueDate, priority, checklist){
@@ -15,11 +10,21 @@ export function Todo(title, description, dueDate, priority, checklist){
 }
 
 //list of todos
-let project = [];
+export const project = [];
 
 //Function to create and add a todo to the object
-export function pushTodo(todo) {
-    project.push(todo);
+
+// handleProject.js import here to access projects array
+import { projects } from './handleProject';
+
+export function pushTodoToProject(todo, projectName) {
+    const projectIndex = projects.findIndex(project => project.title === projectName);
+    if (projectIndex !== -1) {
+        projects[projectIndex].todos.push(todo);
+        console.log("Todo pushed to project:", projectName);
+    } else {
+        console.log("Project not found:", projectName);
+    }
 }
 
 export const printProject = (project) => console.log(project);
