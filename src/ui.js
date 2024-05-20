@@ -251,7 +251,12 @@ export function listenSidebarClick() {
                 removeActiveTab();
                 // ...and give it to the newly clicked project tab.
                 addActiveTab(target);
-                // getProjectContentByName(clickedContent); // To be implemented
+                let project = getProjectContentByName(clickedContent); // To be implemented
+                if (project){
+                    displayProjectContent(project);
+                } else {
+                    console.log('Project not found');
+                }
             }
         }
     });

@@ -17,7 +17,8 @@ export const createProject = (title) => {
 let projects = [];
 
 export function getProjectContentByName(projectName){
-    //TODO: Displays todos in the selected project
+    let project = projects.find(proj => proj.title === projectName);
+    return project;
 }
 
 // export function pushProject(project){
