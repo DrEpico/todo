@@ -10,7 +10,7 @@ export function Todo(title, description, dueDate, priority, checklist){
 }
 
 //list of todos
-export const project = [];
+// export const project = [];
 
 
 // handleProject.js import here to access projects array
@@ -29,7 +29,7 @@ export function pushTodoToProject(todo, projectName) {
 
 export const printProject = (project) => console.log(project);
 
-export function deleteTodoBox(todo, box){
+export function deleteTodoBox(todo, box, project){
     let index = project.indexOf(todo);
     if(index !== -1){
         project.splice(index, 1);

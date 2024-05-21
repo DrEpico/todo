@@ -56,7 +56,8 @@ function updateBox(box, todo){
     deleteButton.setAttribute("class", "deleteBtn");
     deleteButton.textContent = "Done";
     deleteButton.addEventListener("click", function(){
-        deleteTodoBox(todo, box);
+
+        deleteTodoBox(project, todo, box);
     });
     box.appendChild(deleteButton);
 
@@ -262,7 +263,7 @@ export function listenSidebarClick() {
                     console.log(project);
                     logProjectTodos(project);
                     
-                    displayProjectContent(project);
+                    displayProjectContent(project);//Main function for showing the todos 
                 } else {
                     console.log('Project not found');
                 }
@@ -336,7 +337,7 @@ function displayProjectContent(project){
     let todos = project.todos;
 
     console.log(typeof(todos));
-    console.log('amogus');
+    console.log('test log');
 
 
     // let contentArea = document.getElementById('content'); // Assuming you have a content area to display the project details
