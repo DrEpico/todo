@@ -332,7 +332,7 @@ function addActiveTab(clickedElement) {
     clickedElement.setAttribute('id', 'activeTab');
     let deleteBtn = document.createElement('button');
     deleteBtn.setAttribute('id', 'deleteBtn');
-    deleteBtn.textContent = 'Delete';
+    // deleteBtn.textContent = '';
     clickedElement.appendChild(deleteBtn);
 }
 

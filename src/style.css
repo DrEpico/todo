@@ -139,13 +139,23 @@ button.addBtn {
 }
 
 #activeTab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: aliceblue;
     color: #333;
+    text-align: center; /* Horizontally center the button */
 }
 
 #deleteBtn {
-    background-image: url(./images/deleteButton.png);
-    border-width: 1px;
+    margin: 0px;
+    background: url('./images/deleteButton.png') no-repeat center center;
+    background-size: contain; /* Ensure the image scales appropriately */
+    width: 23.636px; /* Set the desired width */
+    height: 23.636px; /* Set the desired height */
+    border-width: 2px;
     border-style: solid;
-    border-color: white;
+    border-color: black;
+    border-radius: 10%;
+    margin-right: 13px;
 }
