@@ -25,6 +25,27 @@ export function getProjectContentByName(projectName){
     return project;
 }
 
+export function deleteProjectListener(deleteBtn, clickedElement){
+    deleteBtn.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent triggering the project tab click event
+        let projectName = clickedElement.textContent.trim();
+        if (confirm(`Are you sure you want to delete the project "${projectName}"?`)) {
+            deleteProject(projectName, clickedElement);
+        }
+    });
+} 
+
+function deleteProject(projectName, projectElement){
+    let project = getProjectContentByName(projectName);
+    let index = projects.indexOf(project);
+    if(index !== -1){
+        projects.splice(index, 1);
+    } else {
+        console.log("Error while splicing todos array");
+    }
+    projectElement.remove();
+}
+
 export function logProjectTodos(project) {
     if (!project || !Array.isArray(project.todos)) {
         console.log("Invalid project or todos not found.");
@@ -41,7 +62,6 @@ export function logProjectTodos(project) {
         console.log("------------------------------------------");
     });
 }
-
 
 // export function pushProject(project){
 //     projects.push(project);

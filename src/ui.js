@@ -7,6 +7,7 @@ import { createProject } from './handleProject';
 import { getProjectContentByName } from './handleProject';
 import { initDefaultProject } from './handleProject';
 import { logProjectTodos } from './handleProject';
+import { deleteProjectListener } from './handleProject';
 
 export const body = document.querySelector('body');
 const content = document.querySelector('.content');
@@ -241,10 +242,12 @@ export function loadSidebar(){
 
 export function listenSidebarClick() {
     let sidebar = document.getElementById('sidebar');
-    sidebar.addEventListener('click', function(event) {
+    sidebar.addEventListener('click', function(event){
         let target = event.target;
         if (target.classList.contains('project')) {
             let clickedContent = target.textContent.trim();
+            // console.log('wow');
+            // console.log(typeof(clickedContent));
             // If user clicks on new project...
             if (clickedContent === "New project") {
                 console.log(clickedContent);
@@ -333,8 +336,11 @@ function addActiveTab(clickedElement) {
     let deleteBtn = document.createElement('button');
     deleteBtn.setAttribute('id', 'deleteBtn');
     // deleteBtn.textContent = '';
+    deleteProjectListener(deleteBtn, clickedElement);
     clickedElement.appendChild(deleteBtn);
 }
+
+
 
 function addNewProjectElement() {
     let sidebar = document.querySelector('#sidebar');
