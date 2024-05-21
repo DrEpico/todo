@@ -30,7 +30,7 @@ function initTodoBox(box) {
     generateForm(box);
 }
 
-function updateBox(box, todo){
+function updateBox(box, todo, project){
     const titleElement = document.createElement('h2');
     titleElement.textContent = todo.title;
 
@@ -57,7 +57,7 @@ function updateBox(box, todo){
     deleteButton.textContent = "Done";
     deleteButton.addEventListener("click", function(){
 
-        deleteTodoBox(project, todo, box);
+        deleteTodoBox(todo, box, project);
     });
     box.appendChild(deleteButton);
 
@@ -183,8 +183,12 @@ function generateForm(box) {
 
         addTodoBox();
         form.remove();
-        updateBox(box, todo);
         let projectName = document.querySelector('#activeTab').textContent;
+        console.log(projectName);
+        let project = getProjectContentByName(projectName);
+        console.log(project);
+        updateBox(box, todo, project);
+        // let projectName = document.querySelector('#activeTab').textContent;
         pushTodoToProject(todo, projectName);
     });
 

@@ -9,10 +9,6 @@ export function Todo(title, description, dueDate, priority, checklist){
     this.checklist = checklist;
 }
 
-//list of todos
-// export const project = [];
-
-
 // handleProject.js import here to access projects array
 import { projects } from './handleProject';
 
@@ -30,9 +26,13 @@ export function pushTodoToProject(todo, projectName) {
 export const printProject = (project) => console.log(project);
 
 export function deleteTodoBox(todo, box, project){
-    let index = project.indexOf(todo);
+    console.log(typeof(project));
+    console.log('project:' + project);
+    let index = project.todos.indexOf(todo);
     if(index !== -1){
-        project.splice(index, 1);
+        project.todos.splice(index, 1);
+    } else {
+        console.log("Error while splicing todos array");
     }
 
     box.remove();
