@@ -142,3 +142,10 @@ button.addBtn {
     background-color: aliceblue;
     color: #333;
 }
+
+#deleteBtn {
+    background-image: url(./images/deleteButton.png);
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+}

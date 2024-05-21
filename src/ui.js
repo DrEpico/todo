@@ -321,11 +321,19 @@ function removeActiveTab() {
     let activeTab = document.getElementById('activeTab');
     if (activeTab) {
         activeTab.removeAttribute('id');
+        let button = document.querySelector('#deleteBtn');
+        if (button){
+            button.remove();
+        }
     }
 }
 
 function addActiveTab(clickedElement) {
     clickedElement.setAttribute('id', 'activeTab');
+    let deleteBtn = document.createElement('button');
+    deleteBtn.setAttribute('id', 'deleteBtn');
+    deleteBtn.textContent = 'Delete';
+    clickedElement.appendChild(deleteBtn);
 }
 
 function addNewProjectElement() {
