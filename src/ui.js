@@ -354,6 +354,8 @@ function displayProjectContent(project){
     let todos = project.todos;
     for (let todo of todos){
         let box = addTodoBox(todo); // Create and append new box
+        box.textContent = ''; // Update content to todo list
+        box.classList.remove('clickable'); // Remove clickable class
         updateBox(box, todo, project) // Update box with todo details
     }
     addTodoBox();
