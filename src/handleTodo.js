@@ -1,5 +1,8 @@
 //handleTodo.js
 
+import { getProjectContentByName } from './handleProject';
+import { displayProjectContent } from './ui';
+
 //Constructor function 
 export function Todo(title, description, dueDate, priority, checklist){
     this.title = title;
@@ -36,6 +39,15 @@ export function deleteTodoBox(todo, box, project){
     }
 
     box.remove();
+}
+
+export function handleSortChange(event) {
+    const sortBy = event.target.value;
+    if (sortBy === 'date') {
+        sortByDate();
+    } else if (sortBy === 'priority') {
+        sortByPriority();
+    }
 }
 
 export function priorityValue(priority) {

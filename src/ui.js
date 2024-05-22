@@ -8,7 +8,7 @@ import { getProjectContentByName } from './handleProject';
 import { initDefaultProject } from './handleProject';
 import { logProjectTodos } from './handleProject';
 import { deleteProjectListener } from './handleProject';
-import { priorityValue, sortByDate, sortByPriority } from './handleTodo';
+import { handleSortChange } from './handleTodo';
 
 
 export const body = document.querySelector('body');
@@ -352,7 +352,7 @@ function addNewProjectElement() {
     sidebar.appendChild(newProject);
 }
 
-function displayProjectContent(project){
+export function displayProjectContent(project){
     clearTodoContainer();
     let title = project.title;
     let todos = project.todos;
@@ -389,6 +389,8 @@ export function loadSortOption(){
         option.textContent = optionText;
         sortByElement.appendChild(option);
     });
+
+    sortByElement.addEventListener('change', handleSortChange);
 
     sortByDiv.appendChild(sortByLabel);
     sortByDiv.appendChild(sortByElement);
