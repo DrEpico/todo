@@ -81,6 +81,7 @@ function addTodoBox() {
     });
 
     content.appendChild(box);
+    return box;
 }
 
 export const loadInitialUI = () => {
@@ -335,12 +336,9 @@ function addActiveTab(clickedElement) {
     clickedElement.setAttribute('id', 'activeTab');
     let deleteBtn = document.createElement('button');
     deleteBtn.setAttribute('id', 'deleteBtn');
-    // deleteBtn.textContent = '';
     deleteProjectListener(deleteBtn, clickedElement);
     clickedElement.appendChild(deleteBtn);
 }
-
-
 
 function addNewProjectElement() {
     let sidebar = document.querySelector('#sidebar');
@@ -353,23 +351,13 @@ function addNewProjectElement() {
 function displayProjectContent(project){
     let title = project.title;
     let todos = project.todos;
+    for (let todo of todos){
+        let box = addTodoBox(todo);
+        updateBox(box, todo, project)
+    }
+    // console.log(typeof(todos));
+    // console.log('test log');
 
-    console.log(typeof(todos));
-    console.log('test log');
 
-
-    // let contentArea = document.getElementById('content'); // Assuming you have a content area to display the project details
-    // contentArea.innerHTML = ''; // Clear previous content
-
-    // let projectTitle = document.createElement('h1');
-    // projectTitle.textContent = project.title;
-    // contentArea.appendChild(projectTitle);
-
-    // let todosList = document.createElement('ul');
-    // project.todos.forEach(todo => {
-    //     let todoItem = document.createElement('li');
-    //     todoItem.textContent = todo; // Assuming todos are strings, adjust if they are objects
-    //     todosList.appendChild(todoItem);
-    // });
-    // contentArea.appendChild(todosList);
+    
 }
