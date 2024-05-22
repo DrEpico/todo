@@ -349,15 +349,20 @@ function addNewProjectElement() {
 }
 
 function displayProjectContent(project){
+    clearTodoContainer();
     let title = project.title;
     let todos = project.todos;
     for (let todo of todos){
-        let box = addTodoBox(todo);
-        updateBox(box, todo, project)
+        let box = addTodoBox(todo); // Create and append new box
+        updateBox(box, todo, project) // Update box with todo details
     }
+    addTodoBox();
     // console.log(typeof(todos));
     // console.log('test log');
+}
 
-
-    
+function clearTodoContainer(){
+    while (content.firstChild) {
+        content.removeChild(content.firstChild);
+    }
 }
