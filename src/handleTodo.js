@@ -38,4 +38,33 @@ export function deleteTodoBox(todo, box, project){
     box.remove();
 }
 
+export function priorityValue(priority) {
+    switch(priority) {
+        case 'low': return 1;
+        case 'medium': return 2;
+        case 'high': return 3;
+        default: return 0;
+    }
+}
+
+// Sort todos by date
+export function sortByDate() {
+    let projectName = document.querySelector('#activeTab').textContent;
+    let project = getProjectContentByName(projectName);
+    if (project) {
+        project.todos.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+        displayProjectContent(project);
+    }
+}
+
+// Sort todos by priority
+export function sortByPriority() {
+    let projectName = document.querySelector('#activeTab').textContent;
+    let project = getProjectContentByName(projectName);
+    if (project) {
+        project.todos.sort((a, b) => priorityValue(a.priority) - priorityValue(b.priority));
+        displayProjectContent(project);
+    }
+}
+
 

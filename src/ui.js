@@ -8,6 +8,8 @@ import { getProjectContentByName } from './handleProject';
 import { initDefaultProject } from './handleProject';
 import { logProjectTodos } from './handleProject';
 import { deleteProjectListener } from './handleProject';
+import { priorityValue, sortByDate, sortByPriority } from './handleTodo';
+
 
 export const body = document.querySelector('body');
 const content = document.querySelector('.content');
