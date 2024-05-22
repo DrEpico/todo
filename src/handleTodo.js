@@ -42,6 +42,7 @@ export function deleteTodoBox(todo, box, project){
 }
 
 export function handleSortChange(event) {
+    console.log('handleSortChange called');
     const sortBy = event.target.value;
     if (sortBy === 'date') {
         sortByDate();
@@ -51,6 +52,7 @@ export function handleSortChange(event) {
 }
 
 export function priorityValue(priority) {
+    console.log('priorityValue called');
     switch(priority) {
         case 'low': return 1;
         case 'medium': return 2;
@@ -61,9 +63,11 @@ export function priorityValue(priority) {
 
 // Sort todos by date
 export function sortByDate() {
+    console.log('sortByDate called');
     let projectName = document.querySelector('#activeTab').textContent;
     let project = getProjectContentByName(projectName);
     if (project) {
+        console.log('project exists');
         project.todos.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
         displayProjectContent(project);
     }
@@ -71,10 +75,12 @@ export function sortByDate() {
 
 // Sort todos by priority
 export function sortByPriority() {
+    console.log('sortByPriority called');
     let projectName = document.querySelector('#activeTab').textContent;
     let project = getProjectContentByName(projectName);
     if (project) {
-        project.todos.sort((a, b) => priorityValue(a.priority) - priorityValue(b.priority));
+        console.log('project exists');
+        project.todos.sort((a, b) => priorityValue(b.priority) - priorityValue(a.priority));
         displayProjectContent(project);
     }
 }

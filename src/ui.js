@@ -133,6 +133,8 @@ function generateForm(box) {
     priorityElement.setAttribute("id", "priority");
     priorityElement.setAttribute("name", "priority");
 
+    //UX wise, High should be at top but considering how the top element on the dropdown list becomes 
+    //the priority of that todo object by default, that might not be the best idea.
     let options = ["Low", "Medium", "High"];
     options.forEach(optionText => {
         let option = document.createElement("option");
@@ -365,6 +367,7 @@ export function displayProjectContent(project){
     addTodoBox();
     // console.log(typeof(todos));
     // console.log('test log');
+    console.log(todos);
 }
 
 function clearTodoContainer(){
@@ -373,7 +376,7 @@ function clearTodoContainer(){
     }
 }
 
-export function loadSortOption(){
+export function loadSortOption() {
     let sortByDiv = document.createElement('div');
     let sortByLabel = document.createElement("label");
     sortByLabel.setAttribute("for", "sort");
