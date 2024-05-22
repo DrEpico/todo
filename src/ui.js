@@ -308,6 +308,8 @@ function newProjectForm(target) {
         event.stopPropagation(); // Prevent the event from bubbling up to the parent
         let newProjectName = projNameInput.value.trim();
         if (newProjectName) {
+            clearTodoContainer();
+            addTodoBox();
             // Do something with the new project name, e.g., create a new project
             removeActiveTab();
             clickedProject.textContent = newProjectName;
@@ -367,4 +369,26 @@ function clearTodoContainer(){
     while (content.firstChild) {
         content.removeChild(content.firstChild);
     }
+}
+
+export function loadSortOption(){
+    let sortByDiv = document.createElement('div');
+    let sortByLabel = document.createElement("label");
+    sortByLabel.setAttribute("for", "sort");
+    sortByLabel.textContent = "Sort by: ";
+    let sortByElement = document.createElement("select");
+    sortByElement.setAttribute("id", "sort");
+    sortByElement.setAttribute("name", "sort");
+
+    let options = ["Priority", "Date"];
+    options.forEach(optionText => {
+        let option = document.createElement("option");
+        option.value = optionText.toLowerCase();
+        option.textContent = optionText;
+        sortByElement.appendChild(option);
+    });
+
+    sortByDiv.appendChild(sortByLabel);
+    sortByDiv.appendChild(sortByElement);
+    body.appendChild(sortByDiv);
 }
