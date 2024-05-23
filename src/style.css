@@ -5,11 +5,20 @@
 body{
     background-color: #000000;
     font-family: Poppins;
-    display: flex;
     margin: 0px;
+
+    display: grid;
+    grid-template-columns: max-content 1fr; 
+    grid-template-rows: 2em 48px 1fr;
+    grid-template-areas: 
+        "sidebar header header header"
+        "sidebar header header header"
+        "sidebar content content content"
+        "sidebar content content content";
 }
 
 #sidebar {
+    grid-area: sidebar;
     min-width: 250px;
     border-color: white;
     border-width: 1px;
@@ -19,8 +28,8 @@ body{
     border-left: none;
     border-bottom: none;
     padding: 0 0 35px;
-    margin-right: 20px;
     height: 100vh;
+    margin-right: 10px;
     min-width: max-content;
 }
 
@@ -45,9 +54,9 @@ body{
 }
 
 .content {
-    flex: 1;
+    grid-area: content;
     display: flex;
-    margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 #title {
@@ -57,9 +66,15 @@ body{
 }
 
 #header {
+    grid-area: header;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 20px;
+    align-items: center;
+    margin-right: 30px;
+}
+
+select#sort {
+    margin: 0px;
 }
 
 /* todo element */
