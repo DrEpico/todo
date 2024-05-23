@@ -12,7 +12,13 @@ import { handleSortChange } from './handleTodo';
 
 
 export const body = document.querySelector('body');
-const content = document.querySelector('.content');
+const content = document.createElement('div');
+
+export function loadTodoContainer(){
+    content.setAttribute('class', 'content');
+    body.appendChild(content);
+}
+
 
 function createBox() {
     const box = document.createElement('div');
@@ -226,7 +232,7 @@ function generateForm(box) {
 export function loadSidebar(){
     let sidebar = document.createElement('div');
     sidebar.setAttribute('id', 'sidebar');
-    body.insertBefore(sidebar, content);
+    body.appendChild(sidebar);
     let title = document.createElement('h1');
     title.setAttribute('id', 'title');
     sidebar.appendChild(title);
