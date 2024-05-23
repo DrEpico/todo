@@ -4,7 +4,7 @@ import { loadBlankProject } from './blank-load';
 import { loadInitialUI } from './ui';
 import { printProject } from './handleTodo';
 import { loadSidebar } from './ui'
-import { loadSortOption } from './ui';
+import { loadHeader } from './ui';
 import { loadTodoContainer } from './ui';
 // import { createTodo } from './handleTask';
 
@@ -14,7 +14,7 @@ import { loadTodoContainer } from './ui';
 //Initiate the web app
 loadBlankProject();
 loadSidebar();
-loadSortOption();
+loadHeader();
 loadTodoContainer();
 loadInitialUI();
 

@@ -3,24 +3,68 @@
 }
 
 body{
+    background-color: #000000;
     font-family: Poppins;
     display: flex;
     margin: 0px;
 }
 
-.background {
-    background-color: black;
+#sidebar {
+    min-width: 250px;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    background-color: rgba(0, 0, 0, 0);
+    border-top: none;
+    border-left: none;
+    border-bottom: none;
+    padding: 0 0 35px;
+    margin-right: 20px;
+    height: 100vh;
+    min-width: max-content;
+}
+
+/* project tab element */
+.project {
+    display: block;
+    color: #333;
+    font-size: 16px;
+    color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    padding: 10px 0px 10px 35px;
+    border-right: none;
+    border-left: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* nice little detail */
+}
+
+.project:hover {
+    background-color: rgb(68, 68, 68);
 }
 
 .content {
+    flex: 1;
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 80px;
-    
+    margin-top: 20px;
 }
 
+#title {
+    margin-top: 20px;
+    margin-left: 35px;
+    margin: 20px 35px 20px 35px;
+}
+
+#header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+/* todo element */
 .box {
-    width: calc(45% - 10px);
+    width: 350px;
     height: 300px;
     border: 2px white solid;
     margin: 10px;
@@ -93,48 +137,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     /* You can also set other properties like width, height, etc. to customize the appearance of the icon */
 }
 
-#title {
-    margin-top: 20px;
-    margin-left: 35px;
-    margin: 20px 35px 20px 35px;
-}
-
 .deleteBtn {
     position: absolute;
     bottom: 25px;
     right: 35px;
-}
-
-#sidebar {
-    min-width: 250px;
-    border-color: white;
-    border-width: 1px;
-    border-style: solid;
-    background-color: rgba(0, 0, 0, 0);
-    border-top: rgba(0, 0, 0, 0);
-    border-left: rgba(0, 0, 0, 0);
-    border-bottom: rgba(0, 0, 0, 0);
-    padding: 0px 0px 35px 0px;
-    margin-right: 20px;
-    height: 100vh;
-    width: 25vw;
-}
-
-.project {
-    display: block;
-    color: #333;
-    font-size: 16px;
-    color: white;
-    border-width: 1px;
-    border-style: solid;
-    border-color: white;
-    padding: 10px 0px 10px 35px;
-    border-right: rgba(0, 0, 0, 0);
-    border-left: rgba(0, 0, 0, 0);
-}
-
-.project:hover {
-    background-color: rgb(68, 68, 68);
 }
 
 input.projName {

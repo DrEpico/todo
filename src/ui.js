@@ -19,7 +19,6 @@ export function loadTodoContainer(){
     body.appendChild(content);
 }
 
-
 function createBox() {
     const box = document.createElement('div');
     box.classList.add('box');
@@ -382,8 +381,11 @@ function clearTodoContainer(){
     }
 }
 
-export function loadSortOption() {
+export function loadHeader() {
+    let header = document.createElement('div');
+    header.setAttribute('id', 'header');
     let sortByDiv = document.createElement('div');
+    sortByDiv.setAttribute('id', 'sortByDiv');
     let sortByLabel = document.createElement("label");
     sortByLabel.setAttribute("for", "sort");
     sortByLabel.textContent = "Sort by: ";
@@ -403,5 +405,6 @@ export function loadSortOption() {
 
     sortByDiv.appendChild(sortByLabel);
     sortByDiv.appendChild(sortByElement);
-    body.appendChild(sortByDiv);
+    header.appendChild(sortByDiv);
+    body.appendChild(header);
 }
