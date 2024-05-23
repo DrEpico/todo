@@ -408,7 +408,11 @@ export function loadHeader() {
     header.appendChild(sortByDiv);
     body.appendChild(header);
 
-    changePallet();
+    let palletBtn = document.createElement('button');
+    palletBtn.textContent = "Change colour pallet";
+    palletBtn.setAttribute('id', 'palletBtn');
+    palletBtn.addEventListener('click', changePallet);
+    body.appendChild(palletBtn);
 }
 
 let pallet = ['#222831', '#393E46', '#00ADB5', '#EEEEEE'];
@@ -418,12 +422,6 @@ function changeCSSVariable(varName, value) {
 }
 
 function changePallet(){
-    let palletBtn = document.createElement('button');
-    palletBtn.textContent = "Change colour pallet";
-    palletBtn.setAttribute('id', 'palletBtn');
-    palletBtn.addEventListener('click', changePallet);
-    body.appendChild(palletBtn);
-
     changeCSSVariable('--primary-color', `${pallet[3]}`);
     changeCSSVariable('--secondary-color', `${pallet[2]}`);
     changeCSSVariable('--tertiary-color', `${pallet[1]}`);
