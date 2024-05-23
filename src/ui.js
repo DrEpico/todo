@@ -72,9 +72,9 @@ function updateBox(box, todo, project){
     // Append elements to the box
     box.appendChild(titleElement);
     box.appendChild(descriptionElement);
-    box.appendChild(dueDateElement);
     box.appendChild(priorityElement);
     box.appendChild(checklistElement);
+    box.appendChild(dueDateElement);
 }
 
 function addTodoBox() {
@@ -407,4 +407,22 @@ export function loadHeader() {
     sortByDiv.appendChild(sortByElement);
     header.appendChild(sortByDiv);
     body.appendChild(header);
+
+    let palletBtn = document.createElement('button');
+    palletBtn.textContent = "Change colour pallet";
+    header.appendChild(palletBtn);
+    palletBtn.addEventListener('click', changePallet);
+}
+
+let pallet = ['#222831', '#393E46', '#00ADB5', '#EEEEEE'];
+
+function changeCSSVariable(varName, value) {
+    document.querySelector(':root').style.setProperty(varName, value);
+}
+
+function changePallet(){
+    changeCSSVariable('--primary-color', `${pallet[3]}`);
+    changeCSSVariable('--secondary-color', `${pallet[2]}`);
+    changeCSSVariable('--tertiary-color', `${pallet[1]}`);
+    changeCSSVariable('--quaternary-color', `${pallet[0]}`);
 }
