@@ -1,9 +1,13 @@
 * {
     color: aliceblue;
-}
+    --primary-color: #000000;
+    --secondary-color: aliceblue;
+    --tertiary-color: rgb(68, 68, 68);
+    --quaternary-color: rgba(224, 224, 224, 0.5);
+} 
 
 body{
-    background-color: #000000;
+    background-color: var(--primary-color);
     font-family: Poppins;
     margin: 0px;
 
@@ -20,10 +24,10 @@ body{
 #sidebar {
     grid-area: sidebar;
     min-width: 250px;
-    border-color: white;
+    border-color: var(--secondary-color);
     border-width: 1px;
     border-style: solid;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--primary-color);
     border-top: none;
     border-left: none;
     border-bottom: none;
@@ -36,12 +40,12 @@ body{
 /* project tab element */
 .project {
     display: block;
-    color: #333;
+    color: var(--tertiary-color);
     font-size: 16px;
-    color: white;
+    color: var(--secondary-color);
     border-width: 1px;
     border-style: solid;
-    border-color: white;
+    border-color: var(--secondary-color);
     padding: 10px 0px 10px 35px;
     border-right: none;
     border-left: none;
@@ -50,7 +54,7 @@ body{
 }
 
 .project:hover {
-    background-color: rgb(68, 68, 68);
+    background-color: var(--tertiary-color);
 }
 
 .content {
@@ -73,6 +77,12 @@ body{
     margin-right: 30px;
 }
 
+select {
+    font-family: Poppins;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
 select#sort {
     margin: 0px;
 }
@@ -81,7 +91,7 @@ select#sort {
 .box {
     width: 350px;
     height: 300px;
-    border: 2px white solid;
+    border: 2px var(--secondary-color) solid;
     margin: 10px;
     padding: 20px;
     /* padding-top: 30px; */
@@ -89,10 +99,11 @@ select#sort {
     margin-bottom: 20px; /* Adjust as needed */
     box-sizing: border-box;
     min-width: 350px;
+    transition: background-color 0.3s ease;
 }
 
 .box.clickable:hover {
-    background-color: rgba(224, 224, 224, 0.5); /* Change background color with opacity */
+    background-color: var(--quaternary-color); /* Change background color with opacity */
 }
 
 .plus-sign {
@@ -101,17 +112,21 @@ select#sort {
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Center the plus sign precisely */
     font-size: 24px; /* Adjust the size of the plus sign */
-    color: white; /* Set the color of the plus sign */
+    color: var(--secondary-color); /* Set the color of the plus sign */
     cursor: pointer; /* Change cursor to indicate it's clickable */
     padding: 70px 200px;
 }
 
 input {
     background-color: rgba(0, 0, 0, 0);
-    border-top: rgba(0, 0, 0, 0);
-    border-right: rgba(0, 0, 0, 0);
-    border-left: rgba(0, 0, 0, 0);
+    border-top: none;
+    border-right: none;
+    border-left: none;
     margin-bottom: 15px;
+}
+
+input#planned, input#due {
+    margin-bottom: 19px;
 }
 
 input:focus {
@@ -119,18 +134,13 @@ input:focus {
     border: none;
 }
 
-select {
-    margin-bottom: 19px;
-}
-
 #priority {
-    background-color: #000000;
-    margin-bottom: 19px;
+    background-color: var(--primary-color);
     border-radius: 0%;
 }
 
 #sort {
-    background-color: #000000;
+    background-color: var(--primary-color);
     margin-bottom: 19px;
     border-radius: 0%;
 }
@@ -138,17 +148,18 @@ select {
 button {
     margin-top: 9px;
     background-color: rgba(0, 0, 0, 0);
-    border-color: white;
+    border-color: var(--secondary-color);
+    border-radius: 3px;
 }
 
 button:focus {
-    background-color: rgba(0, 0, 0, 0);
-    border-color: white;
+    background-color: var(--primary-color);
+    border-color: var(--secondary-color);
 }
 
 /* Target the date picker icon specifically */
 input[type="date"]::-webkit-calendar-picker-indicator {
-    background-color: white; /* Set the background color of the date picker icon to transparent */
+    background-color: var(--secondary-color); /* Set the background color of the date picker icon to transparent */
     /* You can also set other properties like width, height, etc. to customize the appearance of the icon */
 }
 
@@ -170,7 +181,7 @@ button.addBtn {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: aliceblue;
+    background-color: var(--secondary-color);
     color: #333;
     text-align: center; /* Horizontally center the button */
 }
@@ -183,7 +194,7 @@ button.addBtn {
     height: 23.636px; /* Set the desired height */
     border-width: 2px;
     border-style: solid;
-    border-color: black;
+    border-color: var(--primary-color);
     border-radius: 15%;
     margin-right: 13px;
 }
