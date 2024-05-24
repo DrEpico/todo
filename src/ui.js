@@ -232,10 +232,10 @@ export function loadSidebar(){
     let sidebar = document.createElement('div');
     sidebar.setAttribute('id', 'sidebar');
     body.appendChild(sidebar);
-    let title = document.createElement('h1');
-    title.setAttribute('id', 'title');
-    sidebar.appendChild(title);
-    title.textContent = "Todo list app";
+    let user = document.createElement('span');
+    user.setAttribute('id', 'user');
+    sidebar.appendChild(user);
+    user.textContent = "Super cool user";
     let today = document.createElement('span');
     today.setAttribute('class', 'project');
     today.setAttribute('id', 'activeTab');
@@ -381,17 +381,26 @@ function clearTodoContainer(){
     }
 }
 
-export function loadHeader() {
+export function loadHeader() {//TODO: add link to github
     let header = document.createElement('div');
     header.setAttribute('id', 'header');
+    let title = document.createElement('h1');
+    title.setAttribute('id', "title");
+    title.textContent = 'Awsome Todo App'
+    let rightGap = document.createElement('div');
+    rightGap.setAttribute('id', 'rightGap');
     let sortByDiv = document.createElement('div');
     sortByDiv.setAttribute('id', 'sortByDiv');
     let sortByLabel = document.createElement("label");
     sortByLabel.setAttribute("for", "sort");
-    sortByLabel.textContent = "Sort by: ";
+    sortByLabel.textContent = "";
     let sortByElement = document.createElement("select");
     sortByElement.setAttribute("id", "sort");
     sortByElement.setAttribute("name", "sort");
+    let palletBtn = document.createElement('button');
+    palletBtn.textContent = "Dark Mode";
+    palletBtn.setAttribute('id', 'palletBtn');
+    palletBtn.addEventListener('click', changePallet);
 
     let options = ["Priority", "Date"];
     options.forEach(optionText => {
@@ -403,16 +412,13 @@ export function loadHeader() {
 
     sortByElement.addEventListener('change', handleSortChange);
 
+    header.appendChild(title);
     sortByDiv.appendChild(sortByLabel);
     sortByDiv.appendChild(sortByElement);
-    header.appendChild(sortByDiv);
+    rightGap.appendChild(sortByDiv);
+    rightGap.appendChild(palletBtn);
+    header.appendChild(rightGap);
     body.appendChild(header);
-
-    let palletBtn = document.createElement('button');
-    palletBtn.textContent = "Change colour pallet";
-    palletBtn.setAttribute('id', 'palletBtn');
-    palletBtn.addEventListener('click', changePallet);
-    header.appendChild(palletBtn);
 }
 
 let pallet = ['#222831', '#393E46', '#00ADB5', '#EEEEEE'];

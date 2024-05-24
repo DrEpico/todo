@@ -74,12 +74,16 @@
     --static13: rgb(235, 235, 235);
     --static14: rgba(0, 0, 0, 0.2);
     --static15: rgba(255, 255, 255, 0.5);
+
+    --margin-lg: 0 12%;
 } 
 
 body{
     background-color: var(--background-50);
     font-family: Poppins;
     margin: 0px;
+    /* margin: var(--margin-lg); */
+    gap: 20px;
 
     display: grid;
     grid-template-columns: max-content 1fr; 
@@ -91,17 +95,41 @@ body{
         "sidebar content content content";
 }
 
+#header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-bottom: 1px solid var(--static7);
+    height: 65px;
+    /* position: fixed; */
+    /*top: 0;*/
+    /* width: 100%; */
+}
+
+#title {
+    font-weight: 600;
+}
+
+#rightGap {
+    display: flex;
+    gap: 30px; /* Optional: Add gap between the elements */
+}
+
 #sidebar {
     grid-area: sidebar;
-    min-width: 250px;
     background-color: var(--static11);
-    padding: 0 0 35px;
-    height: 100vh;
+    padding: 16px;
+    height: 75vh;
     margin-right: 10px;
     min-width: max-content;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    border-radius: 20px;
+    margin-left: 50px;
 }
 
 #activeTab {
@@ -113,14 +141,23 @@ body{
     text-align: center; /* Horizontally center the button */
 }
 
+#user {
+    font-size: 16px;
+    padding: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* nice little detail */
+    opacity: 100%;
+}
+
 /* project tab element */
 .project {
     /* display: block; */
     font-size: 16px;
-    padding: 10px 0px 10px 35px;
+    padding: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease; /* nice little detail */
     opacity: 60%;
+    border-radius: 30px;
 }
 
 .project:hover {
@@ -132,23 +169,6 @@ body{
     grid-area: content;
     display: flex;
     flex-wrap: wrap;
-}
-
-#title {
-    margin-top: 20px;
-    margin-left: 35px;
-    margin: 20px 35px 20px 35px;
-}
-
-#header {
-    grid-area: header;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-right: 30px;
-    /* position: fixed;
-    top: 0;
-    width: 100% */
 }
 
 select {
@@ -163,10 +183,9 @@ select#sort {
 
 /* todo element */
 .box {
-    background-color: var(--background-100);
+    background-color: var(--secondary-100);
     width: 350px;
     height: 300px;
-    margin: 10px;
     padding: 20px;
     /* padding-top: 30px; */
     position: relative; /* Ensure the plus sign is positioned relative to the .box element */
@@ -178,7 +197,7 @@ select#sort {
 }
 
 .box.clickable:hover {
-    background-color: var(--quaternary-color); /* Change background color with opacity */
+    background-color: var(--secondary-200); /* Change background color with opacity */
 }
 
 .plus-sign {
@@ -216,6 +235,10 @@ input#planned, input#due {
 input:focus {
     outline: none;
     border: none;
+}
+
+input.project {
+    width: 20px;
 }
 
 #priority {
@@ -280,13 +303,19 @@ button.addBtn {
     /* bottom: 20px; 
     right: 20px;  */
     margin-top: 0px;
-    margin-left: 15px; /*temp*/
-    background-color: #F38181; /* Example background color */
-    color: white; /* Example text color */
+    color: text; /* Example text color */
     border: none; /* Remove default border */
-    padding: 5px 10px; /* Example padding */
+    padding: 10px 10px; /* Example padding */
     cursor: pointer; /* Pointer cursor on hover */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid var(--static7);
 }
 
+::-webkit-scrollbar {
+width: 8px;
+height: 3px;
+background-color: rgba(131, 131, 131, 0.1);
+}
+::-webkit-scrollbar-thumb {
+background-color: rgba(129, 129, 129, 0.5);
+}
