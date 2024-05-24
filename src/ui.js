@@ -412,7 +412,7 @@ export function loadHeader() {
     palletBtn.textContent = "Change colour pallet";
     palletBtn.setAttribute('id', 'palletBtn');
     palletBtn.addEventListener('click', changePallet);
-    body.appendChild(palletBtn);
+    header.appendChild(palletBtn);
 }
 
 let pallet = ['#222831', '#393E46', '#00ADB5', '#EEEEEE'];

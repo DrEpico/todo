@@ -13,8 +13,8 @@ import { loadTodoContainer } from './ui';
 
 //Initiate the web app
 loadBlankProject();
-loadSidebar();
 loadHeader();
+loadSidebar();
 loadTodoContainer();
 loadInitialUI();
 
