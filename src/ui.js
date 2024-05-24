@@ -63,7 +63,7 @@ function updateBox(box, todo, project){
     let deleteButton = document.createElement("button");
     deleteButton.setAttribute("class", "deleteBtn");
     deleteButton.textContent = "Done";
-    deleteButton.addEventListener("click", function(){
+    deleteButton.addEventListener("click", function(){//could make it shorter but not now
 
         deleteTodoBox(todo, box, project);
     });
@@ -386,9 +386,20 @@ export function loadHeader() {//TODO: add link to github
     header.setAttribute('id', 'header');
     let title = document.createElement('h1');
     title.setAttribute('id', "title");
-    title.textContent = 'Awsome Todo App'
+    title.textContent = 'Awesome Todo App'
     let rightGap = document.createElement('div');
     rightGap.setAttribute('id', 'rightGap');
+
+    let githubLink = document.createElement('a');
+    githubLink.setAttribute('href', 'https://github.com/DrEpico/'); // Replace with your GitHub URL
+    githubLink.setAttribute('target', '_blank'); // Open link in new tab
+
+    let github = document.createElement('div');
+    github.setAttribute('id', 'github');
+    githubLink.appendChild(github);
+
+    rightGap.appendChild(githubLink);
+
     let sortByDiv = document.createElement('div');
     sortByDiv.setAttribute('id', 'sortByDiv');
     let sortByLabel = document.createElement("label");
