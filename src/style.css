@@ -125,6 +125,7 @@ body{
 
 .project:hover {
     background-color: var(--text-100);
+    opacity: 100%;
 }
 
 .content {
@@ -145,6 +146,9 @@ body{
     justify-content: flex-end;
     align-items: center;
     margin-right: 30px;
+    /* position: fixed;
+    top: 0;
+    width: 100% */
 }
 
 select {
@@ -178,14 +182,23 @@ select#sort {
 }
 
 .plus-sign {
-    position: absolute; /* Position the plus sign relative to the .box element */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center the plus sign precisely */
+    /*Position the plus sign relative to the .box element*/
+    position: absolute; 
+    /*Center vertically */
+    top: 0px;
+    /*Center horizontally */
+    left: 0px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px;   
+    line-height: 300px;
+    width: 350px;
+    height: 300px;
+    /* transform: translate(-50%, -50%); Center the plus sign precisely */
     font-size: 24px; /* Adjust the size of the plus sign */
     color: var(--secondary-color); /* Set the color of the plus sign */
     cursor: pointer; /* Change cursor to indicate it's clickable */
-    padding: 70px 200px;
+    /* padding: 70px 200px; */
 }
 
 input {
