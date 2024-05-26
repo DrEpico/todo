@@ -6,7 +6,7 @@ import { printProject } from './handleTodo';
 import { loadSidebar } from './ui'
 import { loadHeader } from './ui';
 import { loadTodoContainer } from './ui';
-import { loadProjects } from './localStorage';
+import { updateProjects } from './localStorage';
 // import { createTodo } from './handleTask';
 
 //test
@@ -19,6 +19,7 @@ loadHeader();
 loadSidebar();
 loadTodoContainer();
 loadInitialUI();
+updateProjects();
 
  
 

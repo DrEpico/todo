@@ -1,5 +1,7 @@
 //handleProject.js
 
+import { updateProjects } from './localStorage';
+
 export function Project(title, todos = []){
     this.title = title;
     this.todos = todos;
@@ -16,6 +18,7 @@ export function createProject(title) {
     const project = new Project(title);
     projects.push(project);
     console.log("New project created:", title);
+    updateProjects();
 
     //TODO: link with a prompt function in ui class
 }
@@ -40,6 +43,7 @@ function deleteProject(projectName, projectElement){
     let index = projects.indexOf(project);
     if(index !== -1){
         projects.splice(index, 1);
+        updateProjects();
     } else {
         console.log("Error while splicing todos array");
     }

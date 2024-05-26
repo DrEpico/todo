@@ -9,7 +9,7 @@ import { initDefaultProject } from './handleProject';
 import { logProjectTodos } from './handleProject';
 import { deleteProjectListener } from './handleProject';
 import { handleSortChange } from './handleTodo';
-
+import { updateProjects } from './localStorage';
 
 export const body = document.querySelector('body');
 const content = document.createElement('div');
@@ -66,6 +66,7 @@ function updateBox(box, todo, project){
     deleteButton.addEventListener("click", function(){//could make it shorter but not now
 
         deleteTodoBox(todo, box, project);
+        updateProjects();
     });
     box.appendChild(deleteButton);
 
