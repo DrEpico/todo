@@ -62,7 +62,3 @@ export function logProjectTodos(project) {
         console.log("------------------------------------------");
     });
 }
-
-// export function pushProject(project){
-//     projects.push(project);
-// }
