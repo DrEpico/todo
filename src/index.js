@@ -7,13 +7,14 @@ import { loadSidebar } from './ui'
 import { loadHeader } from './ui';
 import { loadTodoContainer } from './ui';
 import { updateProjects } from './localStorage';
+import { loadProjects } from './localStorage';
 // import { createTodo } from './handleTask';
 
 //test
 // console.log('test');
 
 //Initiate the web app
-//loadProjects();
+// loadProjects();
 loadBlankProject();
 loadHeader();
 loadSidebar();
