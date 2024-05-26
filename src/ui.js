@@ -200,6 +200,7 @@ function generateForm(box) {
         let project = getProjectContentByName(projectName);
         console.log(project);
         updateBox(box, todo, project);
+        updateProjects();
         // let projectName = document.querySelector('#activeTab').textContent;
         pushTodoToProject(todo, projectName);
     });

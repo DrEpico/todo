@@ -13,7 +13,7 @@ export function updateProjects() {
         
         // Creating todo objects for the project
         project.todos = project.todos.map(todo => {
-            return new Todo(todo.title);
+            return new Todo(todo.title, todo.description, todo.dueDate, todo.priority, todo.checklist);
         });
         
         return project;
@@ -22,11 +22,27 @@ export function updateProjects() {
 
 export function loadProjects(){
     const savedProjects = localStorage.getItem('projects');
-    if (savedProjects){
+    if (savedProjects) {
         const parsedProjects = JSON.parse(savedProjects);
-        parsedProjects.forEach(proj => {
-            const project = new Project(proj.title, proj.todos);
+        parsedProjects.forEach(projData => {
+            // Recreate todos as instances of the Todo class
+            const todos = projData.todos.map(todoData => {
+                return new Todo(
+                    todoData.title,
+                    todoData.description,
+                    todoData.dueDate,
+                    todoData.priority,
+                    todoData.checklist
+                );
+            });
+            
+            // Create a new Project instance with the recreated todos
+            const project = new Project(projData.title, todos);
+            
+            // Display project content (assuming this function exists)
             displayProjectContent(project);
+            
+            // Push the new project instance to the projects array
             projects.push(project);
         });
     } else {
