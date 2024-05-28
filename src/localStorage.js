@@ -1,7 +1,7 @@
 //localStorage.js
 
 import { projects } from "./handleProject";
-import { displayProjectContent } from './ui'
+import { displayProjectContent, displayProjects } from './ui'
 import { Project } from "./handleProject";
 import { Todo } from "./handleTodo";
 
@@ -40,6 +40,7 @@ export function loadProjects(){
             const project = new Project(projData.title, todos);
             
             // Display project content (assuming this function exists)
+            displayProjects(parsedProjects);
             displayProjectContent(project);
             
             // Push the new project instance to the projects array

@@ -9,7 +9,7 @@ import { initDefaultProject } from './handleProject';
 import { logProjectTodos } from './handleProject';
 import { deleteProjectListener } from './handleProject';
 import { handleSortChange } from './handleTodo';
-import { updateProjects } from './localStorage';
+import { loadProjects, updateProjects } from './localStorage';
 
 export const body = document.querySelector('body');
 const content = document.createElement('div');
@@ -248,6 +248,7 @@ export function loadSidebar(){
     newProject.textContent = "New project";
     sidebar.appendChild(newProject);
 
+    loadProjects();
     listenSidebarClick();
     initDefaultProject();
 }
@@ -361,7 +362,17 @@ function addNewProjectElement() {
     sidebar.appendChild(newProject);
 }
 
-export function displayProjectContent(project){
+export function displayProjects(projectsArr){
+    let header = document.querySelector('#sidebar');
+    projectsArr.forEach(proj => {
+        let projectTab = document.createElement('span');
+        projectTab.setAttribute('class', 'project');
+        projectTab.textContent = proj.title;
+        header.appendChild(projectTab);
+    })
+}
+
+export function displayProjectContent(project){//TODO: fix
     clearTodoContainer();
     let title = project.title;
     let todos = project.todos;

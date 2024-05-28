@@ -14,7 +14,6 @@ import { loadProjects } from './localStorage';
 // console.log('test');
 
 //Initiate the web app
-loadProjects();
 loadBlankProject();
 loadHeader();
 loadSidebar();
