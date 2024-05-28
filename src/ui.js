@@ -315,31 +315,30 @@ function newProjectForm(target) {
     clickedProject.appendChild(projNameInput);
     clickedProject.appendChild(addBtn);
 
-    // Add an event listener to the confirmation button
     addBtn.addEventListener('click', function(event) {
         event.stopPropagation(); // Prevent the event from bubbling up to the parent
         let newProjectName = projNameInput.value.trim();
         if (newProjectName) {
-            clearTodoContainer();
-            addTodoBox();
-            // Do something with the new project name, e.g., create a new project
-            removeActiveTab();
-            clickedProject.textContent = newProjectName;
-            addActiveTab(clickedProject);
-            // Add a new "New project" tab
             let projectExists = checkProject(newProjectName);
-            if(!projectExists){
+            if (!projectExists) {
+                clearTodoContainer();
+                addTodoBox();
+                // Do something with the new project name, e.g., create a new project
+                removeActiveTab();
+                clickedProject.textContent = newProjectName;
+                addActiveTab(clickedProject);
+                // Add a new "New project" tab
                 addNewProjectElement();
                 createProject(newProjectName);
             } else {
                 alert("Project name already exists");
+                return false;
             }
         } else {
             alert("Project name cannot be empty.");
         }
     });
 }
-
 function removeActiveTab() {
     let activeTab = document.getElementById('activeTab');
     if (activeTab) {
@@ -367,14 +366,21 @@ function addNewProjectElement() {
     sidebar.appendChild(newProject);
 }
 
-export function displayProjects(projectsArr){
+export function displayProjects(projectsArr) {
     let header = document.querySelector('#sidebar');
+    
     projectsArr.forEach(proj => {
-        let projectTab = document.createElement('span');
-        projectTab.setAttribute('class', 'project');
-        projectTab.textContent = proj.title;
-        header.appendChild(projectTab);
-    })
+        // Check if a project tab with the same title already exists
+        let existingProjectTab = Array.from(header.children).find(child => child.textContent === proj.title);
+        
+        if (!existingProjectTab) {
+            // Create a new project tab if it doesn't already exist
+            let projectTab = document.createElement('span');
+            projectTab.setAttribute('class', 'project');
+            projectTab.textContent = proj.title;
+            header.appendChild(projectTab);
+        }
+    });
 }
 
 export function displayProjectContent(project){//TODO: fix
