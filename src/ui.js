@@ -243,12 +243,12 @@ export function loadSidebar(){
     today.setAttribute('id', 'activeTab');
     today.textContent = "Daily";
     sidebar.appendChild(today);
+    loadProjects();
     let newProject = document.createElement('span');
     newProject.setAttribute('class', 'project');
     newProject.textContent = "New project";
     sidebar.appendChild(newProject);
 
-    loadProjects();
     listenSidebarClick();
     initDefaultProject();
 }
