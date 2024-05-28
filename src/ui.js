@@ -193,16 +193,16 @@ function generateForm(box) {
         const todo = new Todo(title, description, dueDate, priority, checklist);
         console.log(todo);
 
-        addTodoBox();
-        form.remove();
+        
         let projectName = document.querySelector('#activeTab').textContent;
-        console.log(projectName);
         let project = getProjectContentByName(projectName);
-        console.log(project);
-        updateBox(box, todo, project);
-        updateProjects();
-        // let projectName = document.querySelector('#activeTab').textContent;
-        pushTodoToProject(todo, projectName);
+        
+        pushTodoToProject(todo, projectName); // Add the todo to the project
+        updateProjects(); // Update projects in localStorage
+
+        updateBox(box, todo, project); // Update the box with the new todo details
+        addTodoBox(); // Add an empty box for new todos
+        form.remove();
     });
 
     // Append elements to the form
