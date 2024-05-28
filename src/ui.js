@@ -433,9 +433,9 @@ export function loadHeader() {//TODO: add link to github
     sortByElement.setAttribute("id", "sort");
     sortByElement.setAttribute("name", "sort");
     let palletBtn = document.createElement('button');
-    palletBtn.textContent = "Dark Mode";
+    palletBtn.textContent = "Theme Toggle";
     palletBtn.setAttribute('id', 'palletBtn');
-    palletBtn.addEventListener('click', changePallet);
+    palletBtn.addEventListener('click', toggleTheme);
 
     let options = ["Priority", "Date"];
     options.forEach(optionText => {
@@ -454,17 +454,22 @@ export function loadHeader() {//TODO: add link to github
     rightGap.appendChild(palletBtn);
     header.appendChild(rightGap);
     body.appendChild(header);
+
+    // Apply the saved theme when the document is loaded
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        palletBtn.textContent = currentTheme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+    });
 }
 
-let pallet = ['#222831', '#393E46', '#00ADB5', '#EEEEEE'];
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-function changeCSSVariable(varName, value) {
-    document.querySelector(':root').style.setProperty(varName, value);
-}
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
 
-function changePallet(){
-    changeCSSVariable('--primary-color', `${pallet[3]}`);
-    changeCSSVariable('--secondary-color', `${pallet[2]}`);
-    changeCSSVariable('--tertiary-color', `${pallet[1]}`);
-    changeCSSVariable('--quaternary-color', `${pallet[0]}`);
+    const palletBtn = document.getElementById('palletBtn');
+    palletBtn.textContent = newTheme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
 }
