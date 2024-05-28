@@ -7,7 +7,17 @@ import { Todo } from "./handleTodo";
 
 export function updateProjects() {
     // Assume `projects` is an array available in your scope
-    localStorage.setItem('projects', JSON.stringify(projects.map(proj => {
+    const projectNames = new Set();
+    const uniqueProjects = projects.filter(proj => {
+        if (projectNames.has(proj.title)) {
+            return false; // Skip this project if the name already exists
+        } else {
+            projectNames.add(proj.title);
+            return true; // Include this project
+        }
+    });
+
+    const formattedProjects = uniqueProjects.map(proj => {
         // Creating a new Project instance
         let project = new Project(proj.title, proj.todos);
         
@@ -17,13 +27,16 @@ export function updateProjects() {
         });
         
         return project;
-    })));
+    });
+
+    localStorage.setItem('projects', JSON.stringify(formattedProjects));
 }
 
 export function loadProjects(){
     const savedProjects = localStorage.getItem('projects');
     if (savedProjects) {
         const parsedProjects = JSON.parse(savedProjects);
+        displayProjects(parsedProjects);
         parsedProjects.forEach(projData => {
             // Recreate todos as instances of the Todo class
             const todos = projData.todos.map(todoData => {
@@ -40,7 +53,6 @@ export function loadProjects(){
             const project = new Project(projData.title, todos);
             
             // Display project content (assuming this function exists)
-            displayProjects(parsedProjects);
             displayProjectContent(project);
             
             // Push the new project instance to the projects array
@@ -49,4 +61,8 @@ export function loadProjects(){
     } else {
         console.log("No stored projects");
     }
+}
+
+export function checkProject(projectNameString){
+    return projects.some(proj => proj.title === projectNameString);
 }

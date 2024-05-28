@@ -9,7 +9,7 @@ import { initDefaultProject } from './handleProject';
 import { logProjectTodos } from './handleProject';
 import { deleteProjectListener } from './handleProject';
 import { handleSortChange } from './handleTodo';
-import { loadProjects, updateProjects } from './localStorage';
+import { checkProject, loadProjects, updateProjects } from './localStorage';
 
 export const body = document.querySelector('body');
 const content = document.createElement('div');
@@ -327,8 +327,13 @@ function newProjectForm(target) {
             clickedProject.textContent = newProjectName;
             addActiveTab(clickedProject);
             // Add a new "New project" tab
-            addNewProjectElement();
-            createProject(newProjectName);
+            let projectExists = checkProject(newProjectName);
+            if(!projectExists){
+                addNewProjectElement();
+                createProject(newProjectName);
+            } else {
+                alert("Project name already exists");
+            }
         } else {
             alert("Project name cannot be empty.");
         }
