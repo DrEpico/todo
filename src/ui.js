@@ -237,7 +237,7 @@ export function loadSidebar(){
     let user = document.createElement('span');
     user.setAttribute('id', 'user');
     sidebar.appendChild(user);
-    user.textContent = "Super cool user";
+    user.textContent = "User Profile";
     let today = document.createElement('span');
     today.setAttribute('class', 'project');
     today.setAttribute('id', 'activeTab');
