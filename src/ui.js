@@ -415,7 +415,7 @@ export function loadHeader() {//TODO: add link to github
     rightGap.setAttribute('id', 'rightGap');
 
     let githubLink = document.createElement('a');
-    githubLink.setAttribute('href', 'https://github.com/DrEpico/'); // Replace with your GitHub URL
+    githubLink.setAttribute('href', 'https://github.com/DrEpico/todo'); // Replace with your GitHub URL
     githubLink.setAttribute('target', '_blank'); // Open link in new tab
 
     let github = document.createElement('div');
