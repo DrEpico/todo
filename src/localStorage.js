@@ -66,3 +66,4 @@ export function loadProjects(){
 export function checkProject(projectNameString){
     return projects.some(proj => proj.title === projectNameString);
 }
+

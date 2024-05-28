@@ -1,6 +1,7 @@
 //handleProject.js
 
 import { updateProjects } from './localStorage';
+import { displayProjectContent } from './ui';
 
 export function Project(title, todos = []){
     this.title = title;
@@ -12,6 +13,15 @@ export const projects = [];
 export function initDefaultProject(){
     let today = new Project('Daily');
     projects.push(today);
+}
+
+export function setInitialActiveProject() {
+    if (projects.length > 0) {
+        const initialProject = projects[0];
+        displayProjectContent(initialProject);
+    } else {
+        console.log("No projects found to set as active.");
+    }
 }
 
 export function createProject(title) {
