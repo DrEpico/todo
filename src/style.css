@@ -428,6 +428,10 @@ button.addBtn, button#createBtn {
     padding: 1px;
 }
 
+#sort, #palletBtn {
+    font-size: 14px;
+}
+
 #deleteBtn {
     margin: 0px;
     background: url('./images/deleteButton.png') no-repeat center center;
@@ -449,10 +453,6 @@ button.addBtn, button#createBtn {
     height: 30px; /* Set the desired height */
     align-self: center;
 }
-/* deleteButton.addEventListener("click", function(){//could make it shorter but not now
-
-    deleteTodoBox(todo, box, project);
-}); */
 
 #palletBtn {
     /* position: fixed; */

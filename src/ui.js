@@ -432,6 +432,14 @@ export function loadHeader() {//TODO: add link to github
     let sortByElement = document.createElement("select");
     sortByElement.setAttribute("id", "sort");
     sortByElement.setAttribute("name", "sort");
+    // Add placeholder option
+    let placeholderOption = document.createElement("option");
+    placeholderOption.disabled = true;
+    placeholderOption.selected = true;
+    placeholderOption.hidden = true;
+    placeholderOption.textContent = "Sort by";
+    sortByElement.appendChild(placeholderOption);
+
     let palletBtn = document.createElement('button');
     palletBtn.textContent = "Theme Toggle";
     palletBtn.setAttribute('id', 'palletBtn');
