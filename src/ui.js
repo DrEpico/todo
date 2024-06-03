@@ -106,6 +106,7 @@ export const loadInitialUI = () => {
 
 function generateForm(box) {
     let form = document.createElement("form");
+    form.setAttribute('novalidate', '');
 
     let titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", "title");
@@ -115,7 +116,8 @@ function generateForm(box) {
     titleElement.setAttribute("id", "title");
     titleElement.setAttribute("name", "title");
     titleElement.setAttribute('required', '');
-    titleElement.setAttribute('maxlength', "4");
+    let maxlength = 17;
+    titleElement.setAttribute('maxlength', `${maxlength}`);
 
     let descriptionLabel = document.createElement("label");
     descriptionLabel.setAttribute("for", "description");
@@ -179,10 +181,17 @@ function generateForm(box) {
     submitButton.setAttribute("type", "submit");
     submitButton.addEventListener("click", function(event) {
         event.preventDefault();
-
+        // Custom validation messages
         if (titleElement.value.trim() === '') {
-            // If title is empty, display an error message or style the field to indicate it's required
-            alert('Title is required!');
+            titleElement.setCustomValidity('Title is required!');
+        } else if (titleElement.value.length > maxlength) {
+            titleElement.setCustomValidity(`Title must be less than or equal to ${maxlength} characters!`);
+        } else {
+            titleElement.setCustomValidity('');
+        }
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
             return;
         }
 
