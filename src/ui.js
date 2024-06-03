@@ -115,6 +115,7 @@ function generateForm(box) {
     titleElement.setAttribute("id", "title");
     titleElement.setAttribute("name", "title");
     titleElement.setAttribute('required', '');
+    titleElement.setAttribute('maxlength', "4");
 
     let descriptionLabel = document.createElement("label");
     descriptionLabel.setAttribute("for", "description");
