@@ -184,7 +184,7 @@ function generateForm(box) {
         // Custom validation messages
         if (titleElement.value.trim() === '') {
             titleElement.setCustomValidity('Title is required!');
-        } else if (titleElement.value.length > maxlength) {
+        } else if (titleElement.value.length >= maxlength) {
             titleElement.setCustomValidity(`Title must be less than or equal to ${maxlength} characters!`);
         } else {
             titleElement.setCustomValidity('');
@@ -309,6 +309,9 @@ function newProjectForm(target) {
     // Clear the text content of the clicked project tab
     clickedProject.textContent = '';
 
+    let form = document.createElement('form');
+    form.setAttribute('id', 'projectForm');
+    form.setAttribute('novalidate', '');
     // Create a text input field
     let projNameInput = document.createElement("input");
     projNameInput.setAttribute("type", "text");
@@ -322,33 +325,46 @@ function newProjectForm(target) {
     addBtn.setAttribute("class", "addBtn");
 
     // Append the text input field and the confirmation button to the clicked project tab
-    clickedProject.appendChild(projNameInput);
-    clickedProject.appendChild(addBtn);
+    form.appendChild(projNameInput);
+    form.appendChild(addBtn);
+    clickedProject.appendChild(form);
 
     addBtn.addEventListener('click', function(event) {
         event.stopPropagation(); // Prevent the event from bubbling up to the parent
+        event.preventDefault();
+
+        let maxlength = 12;
         let newProjectName = projNameInput.value.trim();
-        if (newProjectName) {
-            let projectExists = checkProject(newProjectName);
-            if (!projectExists) {
-                clearTodoContainer();
-                addTodoBox();
-                // Do something with the new project name, e.g., create a new project
-                removeActiveTab();
-                clickedProject.textContent = newProjectName;
-                addActiveTab(clickedProject);
-                // Add a new "New project" tab
-                addNewProjectElement();
-                createProject(newProjectName);
-            } else {
-                alert("Project name already exists");
-                return false;
-            }
+        let projectExists = checkProject(newProjectName);
+        // Custom validation messages
+        if (projNameInput.value.trim() === '') {
+            projNameInput.setCustomValidity('Title is required!');
+        } else if (projNameInput.value.length >= maxlength) {
+            projNameInput.setCustomValidity(`Title must be less than or equal to ${maxlength} characters!`);
+        } else if (projectExists) {
+            projNameInput.setCustomValidity('A project by that name already exists.');
         } else {
-            alert("Project name cannot be empty.");
+            projNameInput.setCustomValidity('');
         }
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        clearTodoContainer();
+        addTodoBox();
+        // Do something with the new project name, e.g., create a new project
+        removeActiveTab();
+        clickedProject.textContent = newProjectName;
+        addActiveTab(clickedProject);
+        // Add a new "New project" tab
+        addNewProjectElement();
+        createProject(newProjectName);
+
     });
 }
+
 function removeActiveTab() {
     let activeTab = document.getElementById('activeTab');
     if (activeTab) {
